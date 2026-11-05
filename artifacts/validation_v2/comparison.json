@@ -1,0 +1,2114 @@
+[
+  {
+    "experiment": "single_C",
+    "method": "ARX_trajectory",
+    "task": "trajectory_derived",
+    "seed": 0,
+    "class": "C",
+    "windows": 54,
+    "aw_mae": 0.024009988872834877,
+    "aw_rmse": 0.029692596548165594,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "single_C",
+    "method": "ARX_trajectory",
+    "task": "trajectory_derived",
+    "seed": 0,
+    "class": "ALL",
+    "windows": 54,
+    "aw_mae": 0.024009988872834877,
+    "aw_rmse": 0.029692596548165594,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "single_C",
+    "method": "LSTM_head",
+    "task": "direct_indicator",
+    "seed": 42,
+    "class": "C",
+    "windows": 54,
+    "aw_mae": 0.06290810929373776,
+    "aw_rmse": 0.07202051630908969,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "single_C",
+    "method": "LSTM_head",
+    "task": "direct_indicator",
+    "seed": 42,
+    "class": "ALL",
+    "windows": 54,
+    "aw_mae": 0.06290810929373776,
+    "aw_rmse": 0.07202051630908969,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "single_C",
+    "method": "LSTM_head",
+    "task": "direct_indicator",
+    "seed": 43,
+    "class": "C",
+    "windows": 54,
+    "aw_mae": 0.028257924930957138,
+    "aw_rmse": 0.03937812829239182,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "single_C",
+    "method": "LSTM_head",
+    "task": "direct_indicator",
+    "seed": 43,
+    "class": "ALL",
+    "windows": 54,
+    "aw_mae": 0.028257924930957138,
+    "aw_rmse": 0.03937812829239182,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "single_C",
+    "method": "LSTM_head",
+    "task": "direct_indicator",
+    "seed": 44,
+    "class": "C",
+    "windows": 54,
+    "aw_mae": 0.048573436379235044,
+    "aw_rmse": 0.0564916079659058,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "single_C",
+    "method": "LSTM_head",
+    "task": "direct_indicator",
+    "seed": 44,
+    "class": "ALL",
+    "windows": 54,
+    "aw_mae": 0.048573436379235044,
+    "aw_rmse": 0.0564916079659058,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "single_C",
+    "method": "LSTM_trajectory",
+    "task": "trajectory_derived",
+    "seed": 42,
+    "class": "C",
+    "windows": 54,
+    "aw_mae": 0.4656404338777747,
+    "aw_rmse": 0.46643267613834527,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        54,
+        0
+      ]
+    ],
+    "accuracy": 0.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 0.0
+  },
+  {
+    "experiment": "single_C",
+    "method": "LSTM_trajectory",
+    "task": "trajectory_derived",
+    "seed": 42,
+    "class": "ALL",
+    "windows": 54,
+    "aw_mae": 0.4656404338777747,
+    "aw_rmse": 0.46643267613834527,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        54,
+        0
+      ]
+    ],
+    "accuracy": 0.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 0.0
+  },
+  {
+    "experiment": "single_C",
+    "method": "LSTM_trajectory",
+    "task": "trajectory_derived",
+    "seed": 43,
+    "class": "C",
+    "windows": 54,
+    "aw_mae": 0.4662462020558907,
+    "aw_rmse": 0.4670136965189975,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        54,
+        0
+      ]
+    ],
+    "accuracy": 0.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 0.0
+  },
+  {
+    "experiment": "single_C",
+    "method": "LSTM_trajectory",
+    "task": "trajectory_derived",
+    "seed": 43,
+    "class": "ALL",
+    "windows": 54,
+    "aw_mae": 0.4662462020558907,
+    "aw_rmse": 0.4670136965189975,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        54,
+        0
+      ]
+    ],
+    "accuracy": 0.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 0.0
+  },
+  {
+    "experiment": "single_C",
+    "method": "LSTM_trajectory",
+    "task": "trajectory_derived",
+    "seed": 44,
+    "class": "C",
+    "windows": 54,
+    "aw_mae": 0.4738569171174499,
+    "aw_rmse": 0.4746510705002291,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        54,
+        0
+      ]
+    ],
+    "accuracy": 0.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 0.0
+  },
+  {
+    "experiment": "single_C",
+    "method": "LSTM_trajectory",
+    "task": "trajectory_derived",
+    "seed": 44,
+    "class": "ALL",
+    "windows": 54,
+    "aw_mae": 0.4738569171174499,
+    "aw_rmse": 0.4746510705002291,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        54,
+        0
+      ]
+    ],
+    "accuracy": 0.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 0.0
+  },
+  {
+    "experiment": "single_C",
+    "method": "constant_log_rms",
+    "task": "direct_indicator",
+    "seed": 0,
+    "class": "C",
+    "windows": 54,
+    "aw_mae": 0.04102264398817642,
+    "aw_rmse": 0.04864500213853646,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "single_C",
+    "method": "constant_log_rms",
+    "task": "direct_indicator",
+    "seed": 0,
+    "class": "ALL",
+    "windows": 54,
+    "aw_mae": 0.04102264398817642,
+    "aw_rmse": 0.04864500213853646,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "single_C",
+    "method": "persistence_trajectory",
+    "task": "trajectory_derived",
+    "seed": 0,
+    "class": "C",
+    "windows": 54,
+    "aw_mae": 0.48942105456665397,
+    "aw_rmse": 0.49018045835097473,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        54,
+        0
+      ]
+    ],
+    "accuracy": 0.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 0.0
+  },
+  {
+    "experiment": "single_C",
+    "method": "persistence_trajectory",
+    "task": "trajectory_derived",
+    "seed": 0,
+    "class": "ALL",
+    "windows": 54,
+    "aw_mae": 0.48942105456665397,
+    "aw_rmse": 0.49018045835097473,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        54,
+        0
+      ]
+    ],
+    "accuracy": 0.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 0.0
+  },
+  {
+    "experiment": "single_C",
+    "method": "ridge_features",
+    "task": "direct_indicator",
+    "seed": 0,
+    "class": "C",
+    "windows": 54,
+    "aw_mae": 0.02977464708570992,
+    "aw_rmse": 0.040817312688676784,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "single_C",
+    "method": "ridge_features",
+    "task": "direct_indicator",
+    "seed": 0,
+    "class": "ALL",
+    "windows": 54,
+    "aw_mae": 0.02977464708570992,
+    "aw_rmse": 0.040817312688676784,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "single_C",
+    "method": "road_only",
+    "task": "direct_indicator",
+    "seed": 0,
+    "class": "C",
+    "windows": 54,
+    "aw_mae": 0.04041245834578267,
+    "aw_rmse": 0.04785162280239845,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "single_C",
+    "method": "road_only",
+    "task": "direct_indicator",
+    "seed": 0,
+    "class": "ALL",
+    "windows": 54,
+    "aw_mae": 0.04041245834578267,
+    "aw_rmse": 0.04785162280239845,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "all",
+    "method": "ARX_trajectory",
+    "task": "trajectory_derived",
+    "seed": 0,
+    "class": "A",
+    "windows": 54,
+    "aw_mae": 0.013309188800672367,
+    "aw_rmse": 0.01878857477962857,
+    "confusion": [
+      [
+        54,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": null
+  },
+  {
+    "experiment": "all",
+    "method": "ARX_trajectory",
+    "task": "trajectory_derived",
+    "seed": 0,
+    "class": "B",
+    "windows": 54,
+    "aw_mae": 0.050886024748741175,
+    "aw_rmse": 0.05183268704281363,
+    "confusion": [
+      [
+        54,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": null
+  },
+  {
+    "experiment": "all",
+    "method": "ARX_trajectory",
+    "task": "trajectory_derived",
+    "seed": 0,
+    "class": "C",
+    "windows": 54,
+    "aw_mae": 0.22271329893564468,
+    "aw_rmse": 0.22374322762944715,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        54,
+        0
+      ]
+    ],
+    "accuracy": 0.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 0.0
+  },
+  {
+    "experiment": "all",
+    "method": "ARX_trajectory",
+    "task": "trajectory_derived",
+    "seed": 0,
+    "class": "D",
+    "windows": 54,
+    "aw_mae": 0.5973669795120048,
+    "aw_rmse": 0.5988000517896943,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "all",
+    "method": "ARX_trajectory",
+    "task": "trajectory_derived",
+    "seed": 0,
+    "class": "E",
+    "windows": 54,
+    "aw_mae": 0.5385253186203858,
+    "aw_rmse": 0.5411807301442715,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "all",
+    "method": "ARX_trajectory",
+    "task": "trajectory_derived",
+    "seed": 0,
+    "class": "ALL",
+    "windows": 270,
+    "aw_mae": 0.2845601621234898,
+    "aw_rmse": 0.3753768119106981,
+    "confusion": [
+      [
+        108,
+        0
+      ],
+      [
+        54,
+        108
+      ]
+    ],
+    "accuracy": 0.8,
+    "balanced_accuracy": 0.8333333333333333,
+    "macro_f1": 0.8,
+    "recall_discomfort": 0.6666666666666666
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_head",
+    "task": "direct_indicator",
+    "seed": 42,
+    "class": "A",
+    "windows": 54,
+    "aw_mae": 0.01999478921052094,
+    "aw_rmse": 0.023670764061015336,
+    "confusion": [
+      [
+        54,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": null
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_head",
+    "task": "direct_indicator",
+    "seed": 42,
+    "class": "B",
+    "windows": 54,
+    "aw_mae": 0.07499787724933318,
+    "aw_rmse": 0.095912677913584,
+    "confusion": [
+      [
+        39,
+        15
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": 0.7222222222222222,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": null
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_head",
+    "task": "direct_indicator",
+    "seed": 42,
+    "class": "C",
+    "windows": 54,
+    "aw_mae": 0.1143390576923049,
+    "aw_rmse": 0.13922429922739507,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_head",
+    "task": "direct_indicator",
+    "seed": 42,
+    "class": "D",
+    "windows": 54,
+    "aw_mae": 0.18079053220435795,
+    "aw_rmse": 0.23178018440656903,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_head",
+    "task": "direct_indicator",
+    "seed": 42,
+    "class": "E",
+    "windows": 54,
+    "aw_mae": 0.18388393705639697,
+    "aw_rmse": 0.22853230309503053,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_head",
+    "task": "direct_indicator",
+    "seed": 42,
+    "class": "ALL",
+    "windows": 270,
+    "aw_mae": 0.1148012386825828,
+    "aw_rmse": 0.16437275917414568,
+    "confusion": [
+      [
+        93,
+        15
+      ],
+      [
+        0,
+        162
+      ]
+    ],
+    "accuracy": 0.9444444444444444,
+    "balanced_accuracy": 0.9305555555555556,
+    "macro_f1": 0.9405626733588694,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_head",
+    "task": "direct_indicator",
+    "seed": 43,
+    "class": "A",
+    "windows": 54,
+    "aw_mae": 0.04519907539081172,
+    "aw_rmse": 0.04836123687154082,
+    "confusion": [
+      [
+        54,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": null
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_head",
+    "task": "direct_indicator",
+    "seed": 43,
+    "class": "B",
+    "windows": 54,
+    "aw_mae": 0.08755959707638207,
+    "aw_rmse": 0.10432390111222234,
+    "confusion": [
+      [
+        39,
+        15
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": 0.7222222222222222,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": null
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_head",
+    "task": "direct_indicator",
+    "seed": 43,
+    "class": "C",
+    "windows": 54,
+    "aw_mae": 0.13645013268119663,
+    "aw_rmse": 0.1664143897208154,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_head",
+    "task": "direct_indicator",
+    "seed": 43,
+    "class": "D",
+    "windows": 54,
+    "aw_mae": 0.18004178924818282,
+    "aw_rmse": 0.22627099996911523,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_head",
+    "task": "direct_indicator",
+    "seed": 43,
+    "class": "E",
+    "windows": 54,
+    "aw_mae": 0.2087220443698842,
+    "aw_rmse": 0.26467942643407394,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_head",
+    "task": "direct_indicator",
+    "seed": 43,
+    "class": "ALL",
+    "windows": 270,
+    "aw_mae": 0.1315945277532915,
+    "aw_rmse": 0.18009430800870033,
+    "confusion": [
+      [
+        93,
+        15
+      ],
+      [
+        0,
+        162
+      ]
+    ],
+    "accuracy": 0.9444444444444444,
+    "balanced_accuracy": 0.9305555555555556,
+    "macro_f1": 0.9405626733588694,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_head",
+    "task": "direct_indicator",
+    "seed": 44,
+    "class": "A",
+    "windows": 54,
+    "aw_mae": 0.02999741696240266,
+    "aw_rmse": 0.03345367195497489,
+    "confusion": [
+      [
+        54,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": null
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_head",
+    "task": "direct_indicator",
+    "seed": 44,
+    "class": "B",
+    "windows": 54,
+    "aw_mae": 0.08818199153660099,
+    "aw_rmse": 0.11355272898876412,
+    "confusion": [
+      [
+        39,
+        15
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": 0.7222222222222222,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": null
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_head",
+    "task": "direct_indicator",
+    "seed": 44,
+    "class": "C",
+    "windows": 54,
+    "aw_mae": 0.14401123727684642,
+    "aw_rmse": 0.17005251109785843,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_head",
+    "task": "direct_indicator",
+    "seed": 44,
+    "class": "D",
+    "windows": 54,
+    "aw_mae": 0.15788624390347006,
+    "aw_rmse": 0.19529899660871758,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_head",
+    "task": "direct_indicator",
+    "seed": 44,
+    "class": "E",
+    "windows": 54,
+    "aw_mae": 0.1638739937007467,
+    "aw_rmse": 0.2102606545765999,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_head",
+    "task": "direct_indicator",
+    "seed": 44,
+    "class": "ALL",
+    "windows": 270,
+    "aw_mae": 0.11679017667601337,
+    "aw_rmse": 0.158292430582202,
+    "confusion": [
+      [
+        93,
+        15
+      ],
+      [
+        0,
+        162
+      ]
+    ],
+    "accuracy": 0.9444444444444444,
+    "balanced_accuracy": 0.9305555555555556,
+    "macro_f1": 0.9405626733588694,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_trajectory",
+    "task": "trajectory_derived",
+    "seed": 42,
+    "class": "A",
+    "windows": 54,
+    "aw_mae": 0.061936158414306317,
+    "aw_rmse": 0.0637674252219435,
+    "confusion": [
+      [
+        54,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": null
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_trajectory",
+    "task": "trajectory_derived",
+    "seed": 42,
+    "class": "B",
+    "windows": 54,
+    "aw_mae": 0.1433613106318304,
+    "aw_rmse": 0.14423734678204342,
+    "confusion": [
+      [
+        54,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": null
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_trajectory",
+    "task": "trajectory_derived",
+    "seed": 42,
+    "class": "C",
+    "windows": 54,
+    "aw_mae": 0.40013113309417686,
+    "aw_rmse": 0.40140576711801934,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        54,
+        0
+      ]
+    ],
+    "accuracy": 0.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 0.0
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_trajectory",
+    "task": "trajectory_derived",
+    "seed": 42,
+    "class": "D",
+    "windows": 54,
+    "aw_mae": 0.919399910554636,
+    "aw_rmse": 0.9216434939323587,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        54,
+        0
+      ]
+    ],
+    "accuracy": 0.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 0.0
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_trajectory",
+    "task": "trajectory_derived",
+    "seed": 42,
+    "class": "E",
+    "windows": 54,
+    "aw_mae": 1.0809949613776566,
+    "aw_rmse": 1.0844847607215384,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        27,
+        27
+      ]
+    ],
+    "accuracy": 0.5,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 0.5
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_trajectory",
+    "task": "trajectory_derived",
+    "seed": 42,
+    "class": "ALL",
+    "windows": 270,
+    "aw_mae": 0.5211646948145211,
+    "aw_rmse": 0.6650610818183339,
+    "confusion": [
+      [
+        108,
+        0
+      ],
+      [
+        135,
+        27
+      ]
+    ],
+    "accuracy": 0.5,
+    "balanced_accuracy": 0.5833333333333334,
+    "macro_f1": 0.45054945054945056,
+    "recall_discomfort": 0.16666666666666666
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_trajectory",
+    "task": "trajectory_derived",
+    "seed": 43,
+    "class": "A",
+    "windows": 54,
+    "aw_mae": 0.06527947555455907,
+    "aw_rmse": 0.0670194474425632,
+    "confusion": [
+      [
+        54,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": null
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_trajectory",
+    "task": "trajectory_derived",
+    "seed": 43,
+    "class": "B",
+    "windows": 54,
+    "aw_mae": 0.14738075626798053,
+    "aw_rmse": 0.14821380486327412,
+    "confusion": [
+      [
+        54,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": null
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_trajectory",
+    "task": "trajectory_derived",
+    "seed": 43,
+    "class": "C",
+    "windows": 54,
+    "aw_mae": 0.4026345562386651,
+    "aw_rmse": 0.40402631212171,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        54,
+        0
+      ]
+    ],
+    "accuracy": 0.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 0.0
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_trajectory",
+    "task": "trajectory_derived",
+    "seed": 43,
+    "class": "D",
+    "windows": 54,
+    "aw_mae": 0.9234567489539048,
+    "aw_rmse": 0.9258486105580834,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        54,
+        0
+      ]
+    ],
+    "accuracy": 0.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 0.0
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_trajectory",
+    "task": "trajectory_derived",
+    "seed": 43,
+    "class": "E",
+    "windows": 54,
+    "aw_mae": 1.1133429887123083,
+    "aw_rmse": 1.1168216159383093,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        39,
+        15
+      ]
+    ],
+    "accuracy": 0.2777777777777778,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 0.2777777777777778
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_trajectory",
+    "task": "trajectory_derived",
+    "seed": 43,
+    "class": "ALL",
+    "windows": 270,
+    "aw_mae": 0.5304189051454837,
+    "aw_rmse": 0.6773746925703108,
+    "confusion": [
+      [
+        108,
+        0
+      ],
+      [
+        147,
+        15
+      ]
+    ],
+    "accuracy": 0.45555555555555555,
+    "balanced_accuracy": 0.5462962962962963,
+    "macro_f1": 0.3822664238688892,
+    "recall_discomfort": 0.09259259259259259
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_trajectory",
+    "task": "trajectory_derived",
+    "seed": 44,
+    "class": "A",
+    "windows": 54,
+    "aw_mae": 0.07459518961041435,
+    "aw_rmse": 0.07596860871343435,
+    "confusion": [
+      [
+        54,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": null
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_trajectory",
+    "task": "trajectory_derived",
+    "seed": 44,
+    "class": "B",
+    "windows": 54,
+    "aw_mae": 0.1596664998088937,
+    "aw_rmse": 0.16023620809773687,
+    "confusion": [
+      [
+        54,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": null
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_trajectory",
+    "task": "trajectory_derived",
+    "seed": 44,
+    "class": "C",
+    "windows": 54,
+    "aw_mae": 0.3980056556250268,
+    "aw_rmse": 0.3992568024526083,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        54,
+        0
+      ]
+    ],
+    "accuracy": 0.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 0.0
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_trajectory",
+    "task": "trajectory_derived",
+    "seed": 44,
+    "class": "D",
+    "windows": 54,
+    "aw_mae": 0.8858046183613512,
+    "aw_rmse": 0.8885674348294259,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        54,
+        0
+      ]
+    ],
+    "accuracy": 0.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 0.0
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_trajectory",
+    "task": "trajectory_derived",
+    "seed": 44,
+    "class": "E",
+    "windows": 54,
+    "aw_mae": 1.0188570335061389,
+    "aw_rmse": 1.024020371537571,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        6,
+        48
+      ]
+    ],
+    "accuracy": 0.8888888888888888,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 0.8888888888888888
+  },
+  {
+    "experiment": "all",
+    "method": "LSTM_trajectory",
+    "task": "trajectory_derived",
+    "seed": 44,
+    "class": "ALL",
+    "windows": 270,
+    "aw_mae": 0.5073857993823649,
+    "aw_rmse": 0.6370278916599128,
+    "confusion": [
+      [
+        108,
+        0
+      ],
+      [
+        114,
+        48
+      ]
+    ],
+    "accuracy": 0.5777777777777777,
+    "balanced_accuracy": 0.6481481481481481,
+    "macro_f1": 0.5558441558441558,
+    "recall_discomfort": 0.2962962962962963
+  },
+  {
+    "experiment": "all",
+    "method": "constant_log_rms",
+    "task": "direct_indicator",
+    "seed": 0,
+    "class": "A",
+    "windows": 54,
+    "aw_mae": 0.3288492395080206,
+    "aw_rmse": 0.32911652296484,
+    "confusion": [
+      [
+        0,
+        54
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": 0.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": null
+  },
+  {
+    "experiment": "all",
+    "method": "constant_log_rms",
+    "task": "direct_indicator",
+    "seed": 0,
+    "class": "B",
+    "windows": 54,
+    "aw_mae": 0.22425497506327935,
+    "aw_rmse": 0.22458385471679312,
+    "confusion": [
+      [
+        0,
+        54
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": 0.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": null
+  },
+  {
+    "experiment": "all",
+    "method": "constant_log_rms",
+    "task": "direct_indicator",
+    "seed": 0,
+    "class": "C",
+    "windows": 54,
+    "aw_mae": 0.06674471875348977,
+    "aw_rmse": 0.0721025004942168,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "all",
+    "method": "constant_log_rms",
+    "task": "direct_indicator",
+    "seed": 0,
+    "class": "D",
+    "windows": 54,
+    "aw_mae": 0.6568164901043216,
+    "aw_rmse": 0.6595095900257114,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "all",
+    "method": "constant_log_rms",
+    "task": "direct_indicator",
+    "seed": 0,
+    "class": "E",
+    "windows": 54,
+    "aw_mae": 0.9874019136534157,
+    "aw_rmse": 0.9901975188502604,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "all",
+    "method": "constant_log_rms",
+    "task": "direct_indicator",
+    "seed": 0,
+    "class": "ALL",
+    "windows": 270,
+    "aw_mae": 0.4528134674165054,
+    "aw_rmse": 0.5620317410500107,
+    "confusion": [
+      [
+        0,
+        108
+      ],
+      [
+        0,
+        162
+      ]
+    ],
+    "accuracy": 0.6,
+    "balanced_accuracy": 0.5,
+    "macro_f1": 0.375,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "all",
+    "method": "persistence_trajectory",
+    "task": "trajectory_derived",
+    "seed": 0,
+    "class": "A",
+    "windows": 54,
+    "aw_mae": 0.09382709630514349,
+    "aw_rmse": 0.09475962940259533,
+    "confusion": [
+      [
+        54,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": null
+  },
+  {
+    "experiment": "all",
+    "method": "persistence_trajectory",
+    "task": "trajectory_derived",
+    "seed": 0,
+    "class": "B",
+    "windows": 54,
+    "aw_mae": 0.19842136074988478,
+    "aw_rmse": 0.1987929836806559,
+    "confusion": [
+      [
+        54,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": null
+  },
+  {
+    "experiment": "all",
+    "method": "persistence_trajectory",
+    "task": "trajectory_derived",
+    "seed": 0,
+    "class": "C",
+    "windows": 54,
+    "aw_mae": 0.48942105456665397,
+    "aw_rmse": 0.49018045835097473,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        54,
+        0
+      ]
+    ],
+    "accuracy": 0.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 0.0
+  },
+  {
+    "experiment": "all",
+    "method": "persistence_trajectory",
+    "task": "trajectory_derived",
+    "seed": 0,
+    "class": "D",
+    "windows": 54,
+    "aw_mae": 1.0794928259174856,
+    "aw_rmse": 1.081133552744637,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        54,
+        0
+      ]
+    ],
+    "accuracy": 0.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 0.0
+  },
+  {
+    "experiment": "all",
+    "method": "persistence_trajectory",
+    "task": "trajectory_derived",
+    "seed": 0,
+    "class": "E",
+    "windows": 54,
+    "aw_mae": 1.4100782494665802,
+    "aw_rmse": 1.4120372717706564,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        54,
+        0
+      ]
+    ],
+    "accuracy": 0.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 0.0
+  },
+  {
+    "experiment": "all",
+    "method": "persistence_trajectory",
+    "task": "trajectory_derived",
+    "seed": 0,
+    "class": "ALL",
+    "windows": 270,
+    "aw_mae": 0.6542481174011496,
+    "aw_rmse": 0.8308398082920806,
+    "confusion": [
+      [
+        108,
+        0
+      ],
+      [
+        162,
+        0
+      ]
+    ],
+    "accuracy": 0.4,
+    "balanced_accuracy": 0.5,
+    "macro_f1": 0.2857142857142857,
+    "recall_discomfort": 0.0
+  },
+  {
+    "experiment": "all",
+    "method": "ridge_features",
+    "task": "direct_indicator",
+    "seed": 0,
+    "class": "A",
+    "windows": 54,
+    "aw_mae": 0.016579064263569993,
+    "aw_rmse": 0.021554146025998165,
+    "confusion": [
+      [
+        54,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": null
+  },
+  {
+    "experiment": "all",
+    "method": "ridge_features",
+    "task": "direct_indicator",
+    "seed": 0,
+    "class": "B",
+    "windows": 54,
+    "aw_mae": 0.01722553163973587,
+    "aw_rmse": 0.021288117185279006,
+    "confusion": [
+      [
+        54,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": null
+  },
+  {
+    "experiment": "all",
+    "method": "ridge_features",
+    "task": "direct_indicator",
+    "seed": 0,
+    "class": "C",
+    "windows": 54,
+    "aw_mae": 0.020972146454019427,
+    "aw_rmse": 0.024695177567061313,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "all",
+    "method": "ridge_features",
+    "task": "direct_indicator",
+    "seed": 0,
+    "class": "D",
+    "windows": 54,
+    "aw_mae": 0.09827329820710776,
+    "aw_rmse": 0.11576880373949129,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "all",
+    "method": "ridge_features",
+    "task": "direct_indicator",
+    "seed": 0,
+    "class": "E",
+    "windows": 54,
+    "aw_mae": 0.15635702076523525,
+    "aw_rmse": 0.1928440655369122,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "all",
+    "method": "ridge_features",
+    "task": "direct_indicator",
+    "seed": 0,
+    "class": "ALL",
+    "windows": 270,
+    "aw_mae": 0.06188141226593367,
+    "aw_rmse": 0.10209688190277964,
+    "confusion": [
+      [
+        108,
+        0
+      ],
+      [
+        0,
+        162
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": 1.0,
+    "macro_f1": 1.0,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "all",
+    "method": "road_only",
+    "task": "direct_indicator",
+    "seed": 0,
+    "class": "A",
+    "windows": 54,
+    "aw_mae": 0.03012437563143305,
+    "aw_rmse": 0.03387936075214282,
+    "confusion": [
+      [
+        54,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": null
+  },
+  {
+    "experiment": "all",
+    "method": "road_only",
+    "task": "direct_indicator",
+    "seed": 0,
+    "class": "B",
+    "windows": 54,
+    "aw_mae": 0.04099010716463816,
+    "aw_rmse": 0.04364084608475931,
+    "confusion": [
+      [
+        54,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": null
+  },
+  {
+    "experiment": "all",
+    "method": "road_only",
+    "task": "direct_indicator",
+    "seed": 0,
+    "class": "C",
+    "windows": 54,
+    "aw_mae": 0.07191710129449433,
+    "aw_rmse": 0.10017166872340068,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        9,
+        45
+      ]
+    ],
+    "accuracy": 0.8333333333333334,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 0.8333333333333334
+  },
+  {
+    "experiment": "all",
+    "method": "road_only",
+    "task": "direct_indicator",
+    "seed": 0,
+    "class": "D",
+    "windows": 54,
+    "aw_mae": 0.2903259552598178,
+    "aw_rmse": 0.3265649541671563,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "all",
+    "method": "road_only",
+    "task": "direct_indicator",
+    "seed": 0,
+    "class": "E",
+    "windows": 54,
+    "aw_mae": 0.23555988735055117,
+    "aw_rmse": 0.2739807390560696,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        54
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": null,
+    "macro_f1": null,
+    "recall_discomfort": 1.0
+  },
+  {
+    "experiment": "all",
+    "method": "road_only",
+    "task": "direct_indicator",
+    "seed": 0,
+    "class": "ALL",
+    "windows": 270,
+    "aw_mae": 0.13378348534018691,
+    "aw_rmse": 0.19738126173003617,
+    "confusion": [
+      [
+        108,
+        0
+      ],
+      [
+        9,
+        153
+      ]
+    ],
+    "accuracy": 0.9666666666666667,
+    "balanced_accuracy": 0.9722222222222222,
+    "macro_f1": 0.9657142857142857,
+    "recall_discomfort": 0.9444444444444444
+  }
+]

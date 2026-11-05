@@ -12,7 +12,7 @@ consultado; nenhuma reanálise será chamada de novo teste cego.
    pista futura conhecida, sem classe ISO ou resposta futura como entrada. Seleção
    de regularização exclusivamente pela validação. Estado: concluído; 20 testes passaram, modelos e seleção de alpha exportados antes da comparação.
 3. Comparar separadamente trajetórias e indicador aprendido: ridge direto versus
-   cabeça LSTM; ARX e LSTM na trajetória. Estado: pendente.
+   cabeça LSTM; ARX e LSTM na trajetória. Estado: concluído. A regressão de características atingiu 100% e a de amplitude 96,7% neste alvo aproximado, superando 94,4% da LSTM. Não há demonstração de vantagem da LSTM para a classificação.
 4. Gerar perdas, dispersão de RMS, erros por classe/horizonte e resumo por repetição.
    Não considerar as repetições novos ensaios nem usar janelas como amostras
    independentes para intervalos de confiança. Estado: pendente.
