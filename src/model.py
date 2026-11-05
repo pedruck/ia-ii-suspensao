@@ -8,7 +8,8 @@ class SuspensionLSTM(nn.Module):
         self.encoder=nn.LSTM(3,hidden,batch_first=True)
         self.decoder=nn.LSTM(1,hidden,batch_first=True)
         self.output=nn.Linear(hidden,3)
+        self.log_rms=nn.Linear(hidden,1)
     def forward(self,history,road_future):
         _,state=self.encoder(history)
         decoded,_=self.decoder(road_future,state)
-        return self.output(decoded)
+        return self.output(decoded), self.log_rms(decoded.mean(dim=1)).squeeze(-1)

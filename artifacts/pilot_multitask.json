@@ -1,0 +1,25 @@
+[
+  {
+    "name": "single_C",
+    "seed": 42,
+    "pilot": true,
+    "best_validation_loss": 0.8277970552444458,
+    "seconds": 0.23178315162658691,
+    "validation_aw_true_mean": 0.5062625945268064,
+    "validation_aw_prediction_mean": 0.0017581951614448605,
+    "validation_aw_head_mean": 0.9247945547103882,
+    "validation_aw_head_mae": 0.4185320317091554,
+    "log": [
+      {
+        "epoch": 1,
+        "train": 1.1332485675811768,
+        "validation": 0.8848210573196411
+      },
+      {
+        "epoch": 2,
+        "train": 1.0700927476088207,
+        "validation": 0.8277970552444458
+      }
+    ]
+  }
+]
