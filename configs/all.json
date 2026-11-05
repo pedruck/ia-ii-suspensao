@@ -1,0 +1,52 @@
+{
+  "data": {
+    "mode": "all",
+    "classes": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "sampling_hz": 250,
+    "history_s": 5,
+    "forecast_s": 5,
+    "stride_train_s": 1,
+    "stride_test_s": 5
+  },
+  "model": {
+    "hidden": 64,
+    "layers": 1
+  },
+  "training": {
+    "epochs": 30,
+    "patience": 5,
+    "batch_size": 16,
+    "lr": 0.001,
+    "seeds": [
+      42,
+      43,
+      44
+    ]
+  },
+  "comfort": {
+    "threshold": 0.315,
+    "frequency_target_hz": 2
+  },
+  "split": {
+    "train_phase_s": [
+      5,
+      60
+    ],
+    "validation_phase_s": [
+      70,
+      100
+    ],
+    "discard_periods": 1,
+    "test_realization": "suppressed"
+  },
+  "dataset": {
+    "doi": "10.5281/zenodo.17242919",
+    "md5": "3ee016647067d39dd8c4feb61fef47f1"
+  }
+}
