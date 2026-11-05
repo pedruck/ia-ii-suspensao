@@ -1,0 +1,132 @@
+{
+  "md5_verified": true,
+  "rows": [
+    {
+      "kind": "x",
+      "class": "A",
+      "road_points": 100000,
+      "body_points": 400000,
+      "road_range_m": [
+        -0.001018513003237726,
+        0.0013855960198071809
+      ],
+      "body_peak_to_peak_m": 0.0011737637493703956,
+      "dominant_hz": 0.5
+    },
+    {
+      "kind": "x",
+      "class": "B",
+      "road_points": 100000,
+      "body_points": 400000,
+      "road_range_m": [
+        -0.0018412678072531612,
+        0.0025048804846074216
+      ],
+      "body_peak_to_peak_m": 0.0027712513418745024,
+      "dominant_hz": 0.5
+    },
+    {
+      "kind": "x",
+      "class": "C",
+      "road_points": 100000,
+      "body_points": 400000,
+      "road_range_m": [
+        -0.003328643941952265,
+        0.0045283229400732965
+      ],
+      "body_peak_to_peak_m": 0.005717836687804333,
+      "dominant_hz": 0.5
+    },
+    {
+      "kind": "x",
+      "class": "D",
+      "road_points": 100000,
+      "body_points": 400000,
+      "road_range_m": [
+        -0.0060175225182613045,
+        0.008186302211064506
+      ],
+      "body_peak_to_peak_m": 0.013301032363197303,
+      "dominant_hz": 0.5
+    },
+    {
+      "kind": "x",
+      "class": "E",
+      "road_points": 100000,
+      "body_points": 400000,
+      "road_range_m": [
+        -0.010878477208512786,
+        0.014799197137162413
+      ],
+      "body_peak_to_peak_m": 0.029173630119206095,
+      "dominant_hz": 0.5
+    },
+    {
+      "kind": "s",
+      "class": "A",
+      "road_points": 100000,
+      "body_points": 400000,
+      "road_range_m": [
+        -0.0009292859204926452,
+        0.0009292859204926451
+      ],
+      "body_peak_to_peak_m": 0.0011104486923504157,
+      "dominant_hz": 0.5
+    },
+    {
+      "kind": "s",
+      "class": "B",
+      "road_points": 100000,
+      "body_points": 400000,
+      "road_range_m": [
+        -0.001679963087066604,
+        0.0016799630870666037
+      ],
+      "body_peak_to_peak_m": 0.0022501197187100525,
+      "dominant_hz": 0.5
+    },
+    {
+      "kind": "s",
+      "class": "C",
+      "road_points": 100000,
+      "body_points": 400000,
+      "road_range_m": [
+        -0.0030370372687990067,
+        0.0030370372687990063
+      ],
+      "body_peak_to_peak_m": 0.004432053991398589,
+      "dominant_hz": 0.5
+    },
+    {
+      "kind": "s",
+      "class": "D",
+      "road_points": 100000,
+      "body_points": 400000,
+      "road_range_m": [
+        -0.005490355974534845,
+        0.005490355974534844
+      ],
+      "body_peak_to_peak_m": 0.010242428070232124,
+      "dominant_hz": 0.5
+    },
+    {
+      "kind": "s",
+      "class": "E",
+      "road_points": 100000,
+      "body_points": 400000,
+      "road_range_m": [
+        -0.009925465530764094,
+        0.009925465530764092
+      ],
+      "body_peak_to_peak_m": 0.024113295946609246,
+      "dominant_hz": 0.5
+    }
+  ],
+  "raw_sampling_hz": 1000,
+  "usable_periods": [
+    2,
+    3,
+    4
+  ],
+  "acceleration_measured": false
+}
