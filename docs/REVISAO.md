@@ -1,3 +1,5 @@
+> Atualização: a [auditoria adicional](RESULTADOS_AUDITORIA_V3.md) encontrou limitação do orçamento de 30 épocas e repetiu a LSTM com mais treino. Consulte a conclusão atualizada antes de interpretar os resultados anteriores.
+
 # Revisão adicional — 05/11/2026
 
 - Comparação de filtros padronizada e testada como causal; o corte de 80 Hz reproduz exatamente o processamento original.

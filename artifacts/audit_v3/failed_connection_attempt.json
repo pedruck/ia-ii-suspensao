@@ -1,0 +1,36 @@
+{
+  "started": "2026-11-05T03:57:08.503760+00:00",
+  "stages": [
+    {
+      "stage": "01_bundle",
+      "exit_code": 0
+    },
+    {
+      "stage": "02_create",
+      "exit_code": 0
+    },
+    {
+      "stage": "03_bootstrap",
+      "exit_code": 0
+    },
+    {
+      "stage": "04_upload_data",
+      "exit_code": 0
+    },
+    {
+      "stage": "05_data",
+      "exit_code": 0
+    },
+    {
+      "stage": "06_optimizer",
+      "exit_code": -15
+    },
+    {
+      "stage": "11_stop",
+      "exit_code": 0
+    }
+  ],
+  "export_verified": false,
+  "bundle_sha256": "eab3abbebd28311264632257a115eb519082257be0da20d89ce679dd1427d3ef",
+  "finished": "2026-11-05T04:01:52.089085+00:00"
+}

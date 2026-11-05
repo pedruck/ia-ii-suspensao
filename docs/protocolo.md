@@ -1,3 +1,5 @@
+> Atualização: a [auditoria adicional](RESULTADOS_AUDITORIA_V3.md) encontrou limitação do orçamento de 30 épocas e repetiu a LSTM com mais treino. Consulte a conclusão atualizada antes de interpretar os resultados anteriores.
+
 > Complementado pela [segunda análise exploratória](VALIDACAO_V2.md), que acrescenta regressões diretas do indicador, sensibilidade padronizada e reprodução integral. As conclusões atualizadas estão em RESULTADOS_V2.md.
 
 # Protocolo executado

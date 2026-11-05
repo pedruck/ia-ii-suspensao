@@ -16,3 +16,4 @@ paper/*.fdb_latexmk
 !artifacts/validation_v2/reproduction/models/*.pt
 !artifacts/validation_v2/reproduction/tests.log
 !artifacts/validation_v2/reproduction/environment.log
+!artifacts/audit_v3/models/*.pt

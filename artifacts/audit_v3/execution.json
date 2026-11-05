@@ -1,0 +1,30 @@
+{
+  "started": "2026-11-05T04:05:44.683666+00:00",
+  "transport": "single kernel request; no upload or intermediate kernel reconnect",
+  "stages": [
+    {
+      "stage": "single_01_bundle",
+      "exit_code": 0
+    },
+    {
+      "stage": "single_02_create",
+      "exit_code": 0
+    },
+    {
+      "stage": "single_03_all_computations",
+      "exit_code": 0
+    },
+    {
+      "stage": "single_04_download",
+      "exit_code": 0
+    },
+    {
+      "stage": "single_05_stop",
+      "exit_code": 0
+    }
+  ],
+  "export_verified": true,
+  "request_sha256": "99d562ef8e4a9d2907789996520da78605346d9a1342c1cb9d9d4d2262c7d10f",
+  "archive_sha256": "7e298c21e7e0f289ced52b82ffee4a5167eb23a2ae75848818a4dd4cf1427643",
+  "finished": "2026-11-05T04:08:52.650545+00:00"
+}

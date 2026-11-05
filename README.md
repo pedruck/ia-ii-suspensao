@@ -1,48 +1,61 @@
 # Suspensão experimental: previsão temporal e indicador de vibração
 
-Projeto de IA II, tema II. Uma LSTM encoder–decoder prevê cinco segundos de movimento
-da carroceria e pneu, condicionada a cinco segundos de pista futura conhecida.
-Uma cabeça adicional prevê o RMS ponderado para estimar um indicador aproximado de
-conforto vibracional. A meta de frequência até 2 Hz é apresentada separadamente.
+Projeto de IA II, tema II. A LSTM prevê cinco segundos de deslocamento da carroceria,
+pneu e aceleração estimada, além de um RMS ponderado agregado. Recebe histórico e
+pista futura conhecida. A frequência dominante é calculada depois da previsão.
+RMS tem unidade m/s² e mede intensidade de aceleração; não é frequência em Hz.
 
-- [Artigo IEEE atualizado](paper/main.pdf), [fonte LaTeX](paper/main.tex) e [versão anterior](paper/main_v1.pdf).
-- [Resultados da validação adicional](docs/RESULTADOS_V2.md) e [cinco itens executados](docs/VALIDACAO_V2.md).
-- [Reprodução pelo Colab CLI](docs/REPRODUCAO.md) e [evidência da execução limpa](artifacts/validation_v2/reproduction).
-- [Gráficos adicionais](figures/validation_v2): perdas, dispersão de RMS, erros por classe/horizonte, filtros e repetições.
-- [Demonstração original executada](notebooks/04_demonstracao_output.ipynb).
-- [Pesos originais](artifacts/models) e [pesos da reprodução](artifacts/validation_v2/reproduction/models).
+- [Artigo IEEE atualizado, quatro páginas](paper/main.pdf).
+- [Auditoria de validade e correções](docs/RESULTADOS_AUDITORIA_V3.md).
+- [Protocolo e reprodução da auditoria](docs/AUDITORIA_V3.md).
+- [Pesos e evidências da auditoria](artifacts/audit_v3).
+- [Gráficos da auditoria](figures/audit_v3) e [gráficos adicionais](figures/validation_v2).
+- [Resultados e modelos originais](artifacts/models), [segunda análise](docs/RESULTADOS_V2.md).
+- [Demonstração original](notebooks/04_demonstracao_output.ipynb).
 
-Foram executados os modos **single_C** e **all (A–E)**, cada um com três sementes e
-30 épocas. A mesma arquitetura pode ser configurada para treinar só em A, B, C, D
-ou E, ou em todas. A reprodução completa em outro T4 passou nos **23 testes** e
-produziu as mesmas métricas conferidas de deslocamento, RMS e acurácia.
+## Conclusão atualizada
 
-## Resultado principal da validação
+A comparação inicial subestimava a LSTM: cinco das seis melhores validações ocorreram
+na última época disponível, 30. Com até 120 épocas e seleção apenas na validação,
+a mesma arquitetura conjunta atingiu 100% de classificação nas três sementes.
 
-A cabeça LSTM acertou 94,4% dos rótulos globais. Entretanto, uma regressão baseada
-somente na amplitude da pista alcançou 96,7%, e uma ridge com oito características
-alcançou 100%, com menor erro do indicador. O ARX também teve menor erro de
-trajetória (0,488 mm contra 0,669 mm). **Não foi demonstrada vantagem da LSTM**
-frente às referências simples nas tarefas avaliadas.
+| Método, teste global A–E | Acerto | MAE RMS (m/s²) |
+|---|---:|---:|
+| LSTM original, 30 épocas | 94,4% | 0,121 |
+| LSTM conjunta, até 120 | 100% | 0,082 |
+| Ridge, oito características | 100% | 0,062 |
+| Manter RMS dos últimos 5 s | 100% | 0,045 |
 
-Os 100% não validam conforto humano: são rótulos numéricos de uma bancada, separados
-praticamente por classe e sensíveis ao filtro. Com processamento idêntico, reduzir
-o corte de 80 para 40 Hz mudou 53 dos 54 rótulos de C no teste. Há 90 fases distintas
-entre as 270 janelas globais, repetidas três vezes. O teste já havia sido consultado;
-a validação adicional é explicitamente exploratória, sem novo teste cego.
+Os 100% foram reproduzidos por FFT/SVD independentes. Porém, persistir o RMS passado
+já resolve a classificação: o teste cobre intensidades estacionárias separadas por
+classe. Dentro de cada realização, A–E são a mesma forma de onda escalada em amplitude.
+Isso não demonstra resolução geral do problema nem conforto validado em passageiros.
 
-## Executar
+O RMSE de carroceria da LSTM conjunta longa foi 0,484 mm em média, próximo de 0,488 mm
+do ARX; a diferença varia por semente e não prova superioridade estatística. A cabeça
+de RMS não tem consistência física imposta com a aceleração temporal prevista.
 
-Com CLI Colab autenticado, a partir desta pasta:
+A aceleração é derivada e sensível ao filtro. As 270 janelas incluem repetições, e o
+teste já foi consultado: os diagnósticos são exploratórios. Não se identificou erro
+numérico ou vazamento direto do alvo nas verificações realizadas, mas a diversidade
+experimental limita a generalização.
+
+## Executar a auditoria
+
+Com dependências e CLI Colab autenticado, a partir da raiz:
 
 ```bash
-python scripts/reproduce_v2.py
+python scripts/audit_data_v3.py
+python scripts/run_audit_v3.py
+python scripts/report_audit_v3.py
 ```
 
-O script cria um T4, executa os estágios sequencialmente, salva logs/resultados e
-encerra a sessão. Consulte as instruções para exportação, seleção de classes e
-compilação do artigo. Não há fallback CPU validado para treinamento.
+A execução final passou em 26 testes. Os checkpoints foram verificados localmente
+antes de encerrar o T4. Para o fluxo original completo, consulte
+[REPRODUCAO.md](docs/REPRODUCAO.md). Nenhum modelo ou resultado anterior foi apagado;
+as versões anteriores do artigo estão em paper/main_v1.pdf e paper/main_v2.pdf.
 
 Fonte: Foo e Tan, [Zenodo v3](https://zenodo.org/records/17242919),
-DOI 10.5281/zenodo.17242919. O .mat original é obtido do repositório dos autores
-com verificação de checksum; não é redistribuído neste repositório.
+DOI 10.5281/zenodo.17242919. O arquivo original é obtido dos autores e tem o checksum
+verificado. A base fornece pista e deslocamentos; não fornece acelerometria direta,
+relatos de passageiros ou varredura documentada de parâmetros mecânicos.

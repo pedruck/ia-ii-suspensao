@@ -1,0 +1,37 @@
+[
+  {
+    "method": "LSTM original, 30 \u00e9pocas",
+    "accuracy": 0.9444444444444443,
+    "aw_mae": 0.12106198103729589,
+    "aw_mae_seed_sd": 0.009175504009529961,
+    "body_rmse_mm": 0.6688477975937227
+  },
+  {
+    "method": "LSTM conjunta, at\u00e9 120 \u00e9pocas",
+    "accuracy": 1.0,
+    "aw_mae": 0.0824890285730362,
+    "aw_mae_seed_sd": 0.0031847432796259715,
+    "body_rmse_mm": 0.48367943963967264
+  },
+  {
+    "method": "LSTM somente RMS, at\u00e9 120 \u00e9pocas",
+    "accuracy": 0.9925925925925926,
+    "aw_mae": 0.08475486934185028,
+    "aw_mae_seed_sd": 0.015286318785370954,
+    "body_rmse_mm": null
+  },
+  {
+    "method": "Ridge, oito caracter\u00edsticas",
+    "accuracy": 1.0,
+    "aw_mae": 0.0618814118056232,
+    "aw_mae_seed_sd": 0,
+    "body_rmse_mm": null
+  },
+  {
+    "method": "Persist\u00eancia do RMS passado",
+    "accuracy": 1.0,
+    "aw_mae": 0.04478693623770486,
+    "aw_mae_seed_sd": 0,
+    "body_rmse_mm": null
+  }
+]

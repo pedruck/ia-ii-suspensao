@@ -1,0 +1,5 @@
+{
+  "mutation": "Change lower frequency bound from 0.5 to 5 Hz",
+  "incorrect_implementation_failed_tests": true,
+  "restored_implementation_passed_tests": true
+}

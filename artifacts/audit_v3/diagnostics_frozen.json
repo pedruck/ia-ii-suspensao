@@ -1,0 +1,26 @@
+[
+  {
+    "file": "joint_120_42.pt",
+    "sha256": "e74646b76efca6d07000a9bc67691324d72c0893e86f7e390d00da6030ffc467"
+  },
+  {
+    "file": "joint_120_43.pt",
+    "sha256": "e29f78f850eaaf9d412d0de0a6748b3258fadc07bd8fb97fc4ff096d31818a26"
+  },
+  {
+    "file": "joint_120_44.pt",
+    "sha256": "2e42daff7f8089a237b254b48f0c0446370c73de8b67461f3862bdf101b5f8ad"
+  },
+  {
+    "file": "rms_only_120_42.pt",
+    "sha256": "5fadfe8c402a323727d8b6cdfa4de2f2f2c97fb04147647d57a4f49f229408d7"
+  },
+  {
+    "file": "rms_only_120_43.pt",
+    "sha256": "b6d210eb2577a3767ca71e6cb92f044c4617faaad569781806d4852e5c194967"
+  },
+  {
+    "file": "rms_only_120_44.pt",
+    "sha256": "0f3dd4118a527599a2e3cf2d1771069e7d346278db4d870140d9f9bd91fa0531"
+  }
+]

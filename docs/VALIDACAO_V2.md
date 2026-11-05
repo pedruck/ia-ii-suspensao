@@ -1,3 +1,5 @@
+> Atualização: a [auditoria adicional](RESULTADOS_AUDITORIA_V3.md) encontrou limitação do orçamento de 30 épocas e repetiu a LSTM com mais treino. Consulte a conclusão atualizada antes de interpretar os resultados anteriores.
+
 # Segunda análise exploratória — cinco itens
 
 Os resultados originais permanecem em artifacts e no commit 543501f. Novos resultados

@@ -1,0 +1,134 @@
+[
+  {
+    "mode": "joint_120",
+    "seed": 42,
+    "best_epoch": 101,
+    "aw_mae": 0.08541717380285263,
+    "aw_rmse": 0.12483272701501846,
+    "body_rmse_m": 0.00046999426558613777,
+    "confusion": [
+      [
+        108,
+        0
+      ],
+      [
+        0,
+        162
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": 1.0,
+    "macro_f1": 1.0,
+    "recall_discomfort": 1.0
+  },
+  {
+    "mode": "joint_120",
+    "seed": 43,
+    "best_epoch": 103,
+    "aw_mae": 0.0829516276717186,
+    "aw_rmse": 0.11887296289205551,
+    "body_rmse_m": 0.0005184494657441974,
+    "confusion": [
+      [
+        108,
+        0
+      ],
+      [
+        0,
+        162
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": 1.0,
+    "macro_f1": 1.0,
+    "recall_discomfort": 1.0
+  },
+  {
+    "mode": "joint_120",
+    "seed": 44,
+    "best_epoch": 108,
+    "aw_mae": 0.07909828424453735,
+    "aw_rmse": 0.11163076758384705,
+    "body_rmse_m": 0.00046259458758868277,
+    "confusion": [
+      [
+        108,
+        0
+      ],
+      [
+        0,
+        162
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": 1.0,
+    "macro_f1": 1.0,
+    "recall_discomfort": 1.0
+  },
+  {
+    "mode": "rms_only_120",
+    "seed": 42,
+    "best_epoch": 33,
+    "aw_mae": 0.09894821792840958,
+    "aw_rmse": 0.14535439014434814,
+    "body_rmse_m": null,
+    "confusion": [
+      [
+        108,
+        0
+      ],
+      [
+        0,
+        162
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": 1.0,
+    "macro_f1": 1.0,
+    "recall_discomfort": 1.0
+  },
+  {
+    "mode": "rms_only_120",
+    "seed": 43,
+    "best_epoch": 81,
+    "aw_mae": 0.06857066601514816,
+    "aw_rmse": 0.10507123172283173,
+    "body_rmse_m": null,
+    "confusion": [
+      [
+        108,
+        0
+      ],
+      [
+        0,
+        162
+      ]
+    ],
+    "accuracy": 1.0,
+    "balanced_accuracy": 1.0,
+    "macro_f1": 1.0,
+    "recall_discomfort": 1.0
+  },
+  {
+    "mode": "rms_only_120",
+    "seed": 44,
+    "best_epoch": 33,
+    "aw_mae": 0.0867457240819931,
+    "aw_rmse": 0.12766428291797638,
+    "body_rmse_m": null,
+    "confusion": [
+      [
+        108,
+        0
+      ],
+      [
+        6,
+        156
+      ]
+    ],
+    "accuracy": 0.9777777777777777,
+    "balanced_accuracy": 0.9814814814814814,
+    "macro_f1": 0.9770525242223356,
+    "recall_discomfort": 0.9629629629629629
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "torch": "2.11.0+cu130",
+  "gpu": "Tesla T4",
+  "ids_preserved": true,
+  "optimizer_matches_model": true,
+  "before_round_trip": [
+    0.03630280867218971,
+    0.009999990463256836
+  ],
+  "after_round_trip": [
+    0.029272256419062614,
+    0.01001334935426712
+  ]
+}

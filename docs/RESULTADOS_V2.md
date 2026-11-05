@@ -1,3 +1,5 @@
+> Atualização: a [auditoria adicional](RESULTADOS_AUDITORIA_V3.md) encontrou limitação do orçamento de 30 épocas e repetiu a LSTM com mais treino. Consulte a conclusão atualizada antes de interpretar os resultados anteriores.
+
 # Validação adicional: segunda análise exploratória
 
 O teste anterior já foi consultado. Não houve escolha de corte ou ajuste de hiperparâmetros pelas métricas desse teste.

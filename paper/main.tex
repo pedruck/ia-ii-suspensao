@@ -6,10 +6,11 @@
 \title{Previsão Temporal de Suspensão Experimental e Estimativa de um Indicador de Conforto com LSTM}
 \author{\IEEEauthorblockN{Pedro Druck Montalvão Reis}\IEEEauthorblockA{Disciplina: Inteligência Artificial II}}
 \IfFileExists{results_v2.tex}{\input{results_v2.tex}}{\input{paper/results_v2.tex}}
+\IfFileExists{results_v3.tex}{\input{results_v3.tex}}{\input{paper/results_v3.tex}}
 \begin{document}
 \maketitle
 \begin{abstract}
-Aplica-se uma LSTM à previsão de cinco segundos da resposta de uma suspensão experimental, condicionada ao conhecimento da pista futura. Um benchmark público fornece pistas A--E e deslocamentos medidos. Além das trajetórias, estima-se um indicador agregado de aceleração ponderada, convertido em rótulo aproximado de conforto. O modelo global alcançou 94,4\% de acurácia. Uma análise exploratória posterior, entretanto, obteve 96,7\% com apenas a amplitude da pista e 100\% com oito características simples, sem demonstrar vantagem da rede na classificação. O ARX também apresentou menor erro de deslocamento. Uma comparação padronizada de filtros mudou 53 de 54 rótulos da classe C no teste, evidenciando sensibilidade física do alvo. As 270 janelas globais representam 90 fases repetidas três vezes. Os resultados caracterizam um indicador processado de bancada, não conforto validado em passageiros.
+Aplica-se uma LSTM à previsão de cinco segundos de suspensão experimental, condicionada à pista futura conhecida, nas classes A--E de um benchmark público. Além de trajetórias, estima-se um indicador de RMS ponderado da aceleração. Com 30 épocas, a classificação alcançou 94,4\%, ante 100\% de uma regressão com características construídas. Uma auditoria independente reproduziu os números, mas identificou que persistir o RMS passado também alcança 100\%. Dentro de cada realização, A--E são formas de onda proporcionais, e os rótulos permanecem praticamente separados por classe. O limite de 30 épocas não demonstrava estabilização; um diagnóstico com até 120 épocas elevou a LSTM conjunta a 100\%, reduzindo seu erro de RMS. A auditoria não sustenta inferioridade geral da arquitetura nem necessidade de deep learning para esse indicador. Os alvos são sensíveis ao filtro e não representam conforto validado em passageiros.
 \end{abstract}
 \begin{IEEEkeywords}
 suspensão, LSTM, séries temporais, previsão condicionada, conforto vibracional.
@@ -101,7 +102,7 @@ LSTM, cabeça agregada & \LstmMAE & \LstmAcc & \LstmFone\\\bottomrule
 
 No global, a LSTM obteve acurácia 0,9444, macro-F1 0,9406 e acurácia balanceada 0,9306 nas três sementes (Tabela~\ref{tab:indicator}). A matriz de confusão foi idêntica: 93 confortos corretos, 15 falsos alertas de desconforto, 162 desconfortos detectados e nenhum falso conforto. Predizer sempre desconforto, a classe majoritária do treino global, atingiria 60\% de acurácia nesse teste.
 
-A Tabela~\ref{tab:indicator} muda a interpretação da classificação: a amplitude da pista, isoladamente, alcançou 96,7\%, e a ridge de oito características, 100\%. O MAE desta última foi 0,062 m/s$^2$, inferior a 0,121 da LSTM. Como as classes de pista praticamente separam os rótulos, a rede pode reconhecer intensidade sem aprender transições de conforto dentro de cada classe. O desempenho agregado não estabelece vantagem da LSTM frente às referências diretas. Os 100\% também não validam conforto humano ou generalização para novas configurações.
+A Tabela~\ref{tab:indicator} muda a interpretação da classificação: a amplitude da pista, isoladamente, alcançou 96,7\%, e a ridge de oito características, 100\%. O MAE desta última foi 0,062 m/s$^2$, inferior a 0,121 da LSTM. Como as classes de pista praticamente separam os rótulos, a rede pode reconhecer intensidade sem aprender transições de conforto dentro de cada classe. Na configuração de 30 épocas, o desempenho agregado não estabelece vantagem da LSTM frente às referências diretas. Os 100\% também não validam conforto humano ou generalização para novas configurações.
 
 O MAE do indicador global foi $0{,}121\pm0{,}009$ m/s$^2$ e o RMSE de carroceria $0{,}669\pm0{,}034$ mm, com desvio entre sementes. O ARX teve melhor trajetória, com RMSE de 0,488 mm. Os resultados não sustentam superioridade geral da LSTM: há diferenças entre previsão temporal e decisão agregada.
 
@@ -124,10 +125,35 @@ As curvas de treino/validação, dispersões do indicador e erros por classe e h
 
 As principais limitações são a sensibilidade da aceleração derivada ao filtro e ao ruído, a quantidade limitada de realizações, a correlação entre repetições, a hipótese de pista futura conhecida e a ausência de assento e passageiros. Não se variaram parâmetros mecânicos da suspensão. A classificação é concordância com um alvo numérico de bancada.
 
-A sequência completa foi reexecutada em outro runtime T4, incluindo obtenção dos dados, processamento, ajuste das referências, seis treinamentos, congelamento e avaliação. Vinte e três testes passaram. A conferência das métricas de RMSE da carroceria, MAE do indicador e acurácia, por execução e classe, não encontrou diferenças em relação aos registros originais. Pesos, logs, hashes e uma cópia do código executado foram preservados. Isso verifica reprodução computacional, sem criar novas realizações físicas ou um novo teste cego.
+\subsection{Auditoria independente e orçamento de treinamento}
+O RMS foi recalculado com FFT explícita e funções de transferência polinomiais, e a regressão por mínimos quadrados ampliados/SVD. As diferenças máximas foram $8{,}8\times10^{-9}$ e $1{,}1\times10^{-9}$ m/s$^2$, respectivamente, reproduzindo os 100\%. Não se encontrou sobreposição das fases completas de treino/validação ou normalização pelo teste nas verificações realizadas. Esses controles não provam ausência de toda dependência entre observações.
+
+Dentro de cada realização, as entradas A--E são proporcionais, com resíduo relativo da ordem de $10^{-16}$: há cinco amplitudes, não cinco formas independentes. Persistir o RMS dos cinco segundos anteriores também atingiu 100\%, com MAE 0,045 m/s$^2$. Nas 100 permutações agrupadas de alvos de treino, a mediana de acerto caiu para 60\%; não se interpreta esse controle como p-valor, pois janelas vizinhas se sobrepõem. O acerto perfeito não persiste em qualquer fronteira: na Ridge, os limiares diagnósticos de 0,5 e 1,0 resultaram em 92,2\% e 89,6\%, sem seleção de um novo limiar.
+
+Cinco das seis melhores validações originais ocorreram na época final, 30. Assim, fixaram-se dois diagnósticos adicionais: mesma LSTM, sementes 42--44, até 120 épocas e paciência 15; um mantém a perda conjunta, outro otimiza apenas log-RMS. A seleção utiliza somente validação. A atualização do otimizador foi verificada no T4, inclusive após a troca CPU/GPU dos checkpoints; não se encontrou interrupção da atualização nessa versão. Como o teste já era conhecido, os diagnósticos são exploratórios.
+
+\begin{table}[t]
+\caption{Diagnóstico global: médias de três sementes na LSTM.}
+\centering
+\begin{tabular}{lrrr}\toprule
+Método & Acc. (\%) & MAE RMS$^a$ & RMSE$^b$\\\midrule
+LSTM conjunta, 30 épocas & 94,4 & 0,121 & 0,669\\
+LSTM conjunta, até 120 & \AuditJointAcc & \AuditJointMAE & \AuditJointBody\\
+LSTM só RMS, até 120 & \AuditOnlyAcc & \AuditOnlyMAE & --\\
+Ridge, 8 características & 100,0 & 0,062 & --\\
+RMS passado, persistência & 100,0 & \AuditPastMAE & --\\\bottomrule
+\end{tabular}
+\vspace{2pt}
+\parbox{\columnwidth}{\footnotesize $^a$m/s$^2$. $^b$Carroceria em mm. A variante só RMS não treina trajetórias. ARX original: 0,488 mm.}
+\label{tab:audit}
+\end{table}
+
+A LSTM conjunta longa atingiu 100\% nas três sementes, com MAE médio de RMS de 0,082 m/s$^2$ e RMSE de deslocamento de 0,484 mm, próximo de 0,488 do ARX. A diferença varia entre sementes e não estabelece superioridade estatística. A regressão e a persistência do RMS continuam com menor erro agregado. A comparação anterior subestimava a rede, mas o teste continua pouco exigente para classificação: intensidade estável e rótulos separados por classe. Além disso, a Ridge recebe estatísticas prontas e resolve apenas um alvo, enquanto a LSTM original aprende representações temporais e vários alvos.
+
+A sequência completa foi reexecutada em outro runtime T4, incluindo obtenção dos dados, processamento, ajuste das referências, seis treinamentos, congelamento e avaliação. Vinte e três testes passaram nessa reprodução; a auditoria adicional passou em 26 testes e preservou seus seis novos checkpoints após verificar o download. A conferência das métricas de RMSE da carroceria, MAE do indicador e acurácia, por execução e classe, não encontrou diferenças em relação aos registros originais. Pesos, logs, hashes e uma cópia do código executado foram preservados. Isso verifica reprodução computacional, sem criar novas realizações físicas ou um novo teste cego.
 
 \section{Conclusão}
-Implementou-se uma aplicação reproduzível de previsão condicionada com treinamento por uma ou cinco classes. A avaliação adicional não demonstrou vantagem da LSTM: ARX teve menor erro temporal, e uma regressão simples superou a cabeça de indicador. A análise identifica limites do alvo e mostra a importância de referências que resolvam a mesma tarefa. O resultado é uma aplicação exploratória com comparação crítica, sem validação de conforto em passageiros.
+Implementou-se uma aplicação de previsão condicionada com auditoria de métricas e referências simples. O limite inicial de treinamento subestimava a LSTM: com maior orçamento, ela empatou na classificação e aproximou-se do ARX na trajetória. Ainda assim, persistir o RMS passado resolve a classificação deste recorte e tem menor erro agregado. Não há base para declarar a arquitetura inferior em geral ou necessária para esse indicador. O resultado é exploratório, sensível ao processamento e sem validação de conforto humano.
 
 Trabalhos futuros devem validar aceleração com sensores independentes, coletar novas realizações e ambos os rótulos dentro de cada classe, além de avaliar assento e passageiros antes de extrapolar conforto. Código, pesos e métricas estão em \url{https://github.com/pedruck/ia-ii-suspensao}.
 
