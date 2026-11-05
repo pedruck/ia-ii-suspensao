@@ -26,7 +26,8 @@ def tensors(rows,mean,std):
     return [torch.tensor(np.asarray(x),dtype=torch.float32) for x in [hist,roads,target,aw]]
 
 reports=[]
-for name in (['single_C'] if pilot else ['single_C','all']):
+experiments=os.environ.get('EXPERIMENTS','single_C' if pilot else 'single_C,all').split(',')
+for name in experiments:
  cfg=json.loads(Path('configs/'+name+'.json').read_text());mean,std=fit_scaler(arrays,cfg)
  train=tensors(manifest(cfg,'train'),mean,std); val=tensors(manifest(cfg,'validation'),mean,std)
  coef=fit_arx(arrays,cfg['data']['classes'],mean,std)

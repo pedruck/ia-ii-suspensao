@@ -6,3 +6,9 @@ data/
 .env*
 *.pt
 *_output.ipynb
+!artifacts/models/*.pt
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.fls
+paper/*.fdb_latexmk
