@@ -1,3 +1,5 @@
+> Resultados originais preservados. A [análise adicional](RESULTADOS_V2.md) acrescenta referências simples que superaram a LSTM e detalha a sensibilidade dos rótulos.
+
 # Resultados do teste reservado
 
 Métricas de conforto referem-se ao indicador espectral aproximado, não a passageiros.

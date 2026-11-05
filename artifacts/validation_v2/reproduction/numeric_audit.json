@@ -1,0 +1,7 @@
+{
+  "all_evaluation_records_equal": true,
+  "records": 40,
+  "scope": "All fields, including nested confusion and trajectory-derived metrics, compared after JSON parsing",
+  "original_sha256": "50c707f9312c4df833eefb15fe4c1cae5f04ea2492e7f81a829275ae41de7c55",
+  "reproduced_sha256": "50c707f9312c4df833eefb15fe4c1cae5f04ea2492e7f81a829275ae41de7c55"
+}

@@ -1,0 +1,40 @@
+{
+  "models": [
+    {
+      "file": "all_42.pt",
+      "sha256": "be60f60c6b921d1907675eaae357d213a320ebb1774ace368b0cf418e9dd095d",
+      "parameters": 35076
+    },
+    {
+      "file": "all_43.pt",
+      "sha256": "27292d120ab10007be1b1670d17d3b42ed3dab43cc335fc0adc067c79643175a",
+      "parameters": 35076
+    },
+    {
+      "file": "all_44.pt",
+      "sha256": "0f792d4a8b1e7b79e319b09d81e9eac9f3c00384e4de0799c5e8a104b062ebb4",
+      "parameters": 35076
+    },
+    {
+      "file": "single_C_42.pt",
+      "sha256": "ffaf76197a6b389c94eaf29f7b3fb1b93ce553f9f1235a662224d931460b094c",
+      "parameters": 35076
+    },
+    {
+      "file": "single_C_43.pt",
+      "sha256": "7a2e3d0b77ae60f4eb2b8ccecf92dd0ce4a1b8fd974eea6e6cb5a166c8cf8506",
+      "parameters": 35076
+    },
+    {
+      "file": "single_C_44.pt",
+      "sha256": "0e0a39143d4e287688bf238d9d224f1389cb4b7363d8135906a87c0a827c6882",
+      "parameters": 35076
+    }
+  ],
+  "python": "3.13.16",
+  "torch": "2.11.0+cu130",
+  "numpy": "2.4.6",
+  "scipy": "1.16.3",
+  "gpu": "Tesla T4",
+  "test_opened": false
+}

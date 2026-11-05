@@ -17,4 +17,4 @@ consultado; nenhuma reanálise será chamada de novo teste cego.
    Não considerar as repetições novos ensaios nem usar janelas como amostras
    independentes para intervalos de confiança. Estado: concluído; seis figuras geradas e inspecionadas, 21 testes passaram. Resumos por passagem e média das mesmas fases exportados.
 5. Rodar fluxo completo em runtime limpo, exportar artefatos e atualizar artigo IEEE
-   com as limitações e resultados adicionais. Estado: pendente.
+   com as limitações e resultados adicionais. Estado: concluído em 05/11/2026. Fluxo integral reexecutado em novo T4, seis novos treinamentos, 23 testes passaram, métricas conferidas idênticas às originais; pesos, logs e código efetivo preservados; runtime encerrado.

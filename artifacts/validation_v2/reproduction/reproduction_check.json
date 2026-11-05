@@ -1,0 +1,12 @@
+{
+  "matches_within_tolerance": true,
+  "missing_runs": [],
+  "extra_runs": [],
+  "max_absolute_differences": {
+    "body_rmse_m": 0.0,
+    "aw_mae": 0.0,
+    "accuracy": 0.0
+  },
+  "mismatches": [],
+  "tolerance": "accuracy 1e-12 absolute; physical errors 1e-7 absolute + 1e-4 relative"
+}

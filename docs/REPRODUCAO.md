@@ -1,3 +1,43 @@
+# Reprodução integral validada em ambiente limpo
+
+Para repetir a segunda análise exploratória na raiz do repositório:
+
+```bash
+python scripts/reproduce_v2.py
+```
+
+O comando cria outro T4, executa os estágios sequencialmente e encerra a sessão em
+`finally`. Requer CLI Colab autenticado e disponibilidade de T4. Os logs ficam em
+`runs/reproduction_v2`; o arquivo final conserva todos os resultados. A execução
+realizada em 05/11/2026 está registrada em
+`artifacts/validation_v2/reproduction/execution.json`, com 22 estágios bem-sucedidos.
+Os 23 testes e a conferência numérica estão nessa mesma pasta. O `source_commit`
+registra o commit-base; `source_snapshot.zip` preserva o código então executado,
+inclusive alterações ainda não commitadas, ligado pelo hash do bundle no relatório.
+O snapshot não contém credenciais nem o arquivo original de dados.
+
+Depois de exportar os arquivos locais, os gráficos e números do artigo podem ser
+regenerados com NumPy/Matplotlib instalados:
+
+```bash
+python scripts/plots_v2.py
+python scripts/report_v2.py
+```
+
+O pacote da execução limpa foi exportado para `runs/reproduction_v2/results.zip`.
+Os seis checkpoints novos e os relatórios principais também foram versionados em
+`artifacts/validation_v2/reproduction`. Os pesos e resultados originais permanecem
+intactos em `artifacts/models` e nos arquivos originais. O artigo anterior foi
+preservado em `paper/main_v1.pdf`; o atual é `paper/main.pdf`.
+
+O script compara a avaliação completa de trajetórias; a análise de referências
+diretas usa as saídas originais da LSTM já preservadas, com indicadores de referência
+conferidos contra os sinais novamente processados. Não se altera o modelo para
+melhorar resultados após avaliar o teste. A repetição é computacional e exploratória,
+não um novo teste independente ou validação de conforto humano.
+
+---
+
 # Reprodução pelo Colab CLI
 
 Executar na raiz do repositório. `colab` deve estar instalado e autenticado.

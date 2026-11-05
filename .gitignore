@@ -13,3 +13,6 @@ paper/*.out
 paper/*.fls
 paper/*.fdb_latexmk
 !notebooks/04_demonstracao_output.ipynb
+!artifacts/validation_v2/reproduction/models/*.pt
+!artifacts/validation_v2/reproduction/tests.log
+!artifacts/validation_v2/reproduction/environment.log

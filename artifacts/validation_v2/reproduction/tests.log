@@ -1,0 +1,33 @@
+
+[colab] A new version of Colab CLI is available: 0.7.5 (current: 0.7.4)
+[colab] Run 'colab update' to update.
+[colab] To silence this check, set "enable_update_check": false in ~/.config/colab-cli/settings.json
+
+test_recursive_rollout_on_known_system (test_baselines.BaselineTests.test_recursive_rollout_on_known_system) ... ok
+test_log_scale_change (test_energy.EnergyTests.test_log_scale_change) ... ok
+test_regression_on_known_log_linear_rule (test_energy.EnergyTests.test_regression_on_known_log_linear_rule) ... ok
+test_zero_inputs_are_finite (test_energy.EnergyTests.test_zero_inputs_are_finite) ... ok
+test_repeated_passes_are_collapsed_without_merging_seeds (test_grouping.GroupingTests.test_repeated_passes_are_collapsed_without_merging_seeds) ... ok
+test_invalid_input_rejected_before_loading_weights (test_inference.InferenceTests.test_invalid_input_rejected_before_loading_weights) ... ok
+test_confusion_and_balanced_accuracy (test_metrics.MetricsTests.test_confusion_and_balanced_accuracy) ... ok
+test_single_class_is_not_discrimination (test_metrics.MetricsTests.test_single_class_is_not_discrimination) ... ok
+test_variable_batch_and_horizon (test_model.ModelTests.test_variable_batch_and_horizon) ... ok
+test_80hz_matches_original_pipeline (test_preprocessing.PreprocessingTests.test_80hz_matches_original_pipeline) ... ok
+test_future_samples_do_not_change_past (test_preprocessing.PreprocessingTests.test_future_samples_do_not_change_past) ... ok
+test_sinusoidal_rms (test_preprocessing.PreprocessingTests.test_sinusoidal_rms) ... ok
+test_configs (test_protocol.ProtocolTests.test_configs) ... ok
+test_rejects_extra_classes_in_single (test_protocol.ProtocolTests.test_rejects_extra_classes_in_single) ... ok
+test_rejects_incomplete_all (test_protocol.ProtocolTests.test_rejects_incomplete_all) ... ok
+test_changed_classification_or_missing_runs_fail (test_reproduction.ReproductionTests.test_changed_classification_or_missing_runs_fail) ... ok
+test_small_roundoff_is_accepted (test_reproduction.ReproductionTests.test_small_roundoff_is_accepted) ... ok
+test_frequency_and_quiet_signal (test_signals.SignalTests.test_frequency_and_quiet_signal) ... ok
+test_published_wk_weights (test_signals.SignalTests.test_published_wk_weights) ... ok
+test_sinusoidal_acceleration (test_signals.SignalTests.test_sinusoidal_acceleration) ... ok
+test_weighted_sine_rms (test_signals.SignalTests.test_weighted_sine_rms) ... ok
+test_complete_windows_and_disjoint_phases (test_splits.SplitTests.test_complete_windows_and_disjoint_phases) ... ok
+test_unknown_split_fails (test_splits.SplitTests.test_unknown_split_fails) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 0.144s
+
+OK

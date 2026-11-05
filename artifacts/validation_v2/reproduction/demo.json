@@ -1,0 +1,8 @@
+{
+  "weighted_rms_predicted": 0.7500098347663879,
+  "weighted_rms_from_trajectory": 0.13213585449381646,
+  "comfortable_proxy": false,
+  "dominant_hz": 0.6000000000000001,
+  "meets_2hz": true,
+  "scope": "lab bench; future road known; approximate vertical vibration indicator"
+}

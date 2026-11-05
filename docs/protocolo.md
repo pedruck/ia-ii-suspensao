@@ -1,3 +1,5 @@
+> Complementado pela [segunda análise exploratória](VALIDACAO_V2.md), que acrescenta regressões diretas do indicador, sensibilidade padronizada e reprodução integral. As conclusões atualizadas estão em RESULTADOS_V2.md.
+
 # Protocolo executado
 
 Aplicação de LSTM a séries temporais da bancada Quanser, tema II de IA II.

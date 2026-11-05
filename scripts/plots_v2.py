@@ -97,3 +97,18 @@ for method in ['road_only','ridge_features','LSTM_head']:
 ax.set(xticks=[2,3,4],xlabel='Repeated pass (same road input)',ylabel='a_w MAE (m/s²)',title='Descriptive repeat analysis; error bars = seed SD');ax.legend()
 save(fig,'repetition_summary.png')
 print('Six figures and repeat-aware summaries generated')
+
+# The same prespecified forecast examples, formatted at final IEEE column size.
+from src.dataset import manifest
+cfg=json.loads((root/'configs/all.json').read_text());index=manifest(cfg,'test')
+trajectories=np.load(root/'artifacts/predictions.npz')
+plt.rcParams.update({'font.size':8})
+fig,axs=plt.subplots(2,1,figsize=(3.5,2.9))
+for ax,c in zip(axs,['A','C']):
+ j=next(j for j,(key,i) in enumerate(index) if key[1]==c)
+ ax.plot(np.arange(1250)/250,trajectories['all_true'][j,:,0]*1000,lw=.8,label='Medido (processado)')
+ ax.plot(np.arange(1250)/250,trajectories['all_pred'][j,:,0]*1000,lw=.8,label='LSTM')
+ ax.set(ylabel='Carroceria (mm)',title='Classe '+c)
+ ax.legend(fontsize=6,loc='upper right')
+axs[-1].set_xlabel('Tempo futuro (s)')
+save(fig,'forecast_paper.png')

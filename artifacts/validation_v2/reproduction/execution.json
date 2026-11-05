@@ -1,0 +1,120 @@
+{
+  "started_utc": "2026-11-05T03:20:12.474789+00:00",
+  "source_commit": "7bcfecc61f3f5745375fcb24c2360c17b4c5c3d3",
+  "stages": [
+    {
+      "name": "01_bundle",
+      "started_utc": "2026-11-05T03:20:12.478317+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "02_new_runtime",
+      "started_utc": "2026-11-05T03:20:12.594834+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "03_bootstrap",
+      "started_utc": "2026-11-05T03:20:17.231761+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "04_environment",
+      "started_utc": "2026-11-05T03:20:22.468086+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "05_tests",
+      "started_utc": "2026-11-05T03:20:31.017771+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "06_download_audit",
+      "started_utc": "2026-11-05T03:20:45.096629+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "07_prepare",
+      "started_utc": "2026-11-05T03:22:16.702652+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "08_splits",
+      "started_utc": "2026-11-05T03:22:23.197940+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "09_sensitivity",
+      "started_utc": "2026-11-05T03:22:26.578049+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "10_direct_references",
+      "started_utc": "2026-11-05T03:22:35.731612+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "11_train_six_runs",
+      "started_utc": "2026-11-05T03:23:02.010847+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "12_freeze",
+      "started_utc": "2026-11-05T03:23:47.978044+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "13_evaluate",
+      "started_utc": "2026-11-05T03:23:53.466464+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "14_demo",
+      "started_utc": "2026-11-05T03:25:12.172928+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "15_upload_original",
+      "started_utc": "2026-11-05T03:25:23.210184+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "16_original_reference",
+      "started_utc": "2026-11-05T03:25:24.883798+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "17_indicator_comparison",
+      "started_utc": "2026-11-05T03:25:29.167716+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "18_check_reproduction",
+      "started_utc": "2026-11-05T03:25:56.605761+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "19_final_tests",
+      "started_utc": "2026-11-05T03:26:01.140213+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "20_package",
+      "started_utc": "2026-11-05T03:26:06.031894+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "21_download",
+      "started_utc": "2026-11-05T03:26:12.074250+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "22_stop_runtime",
+      "started_utc": "2026-11-05T03:26:18.745204+00:00",
+      "exit_code": 0
+    }
+  ],
+  "success": true,
+  "bundle_sha256": "6d9191f138f05383784b5de052de1b6e678f1e590b743660ad780ec52a892707",
+  "archive_sha256": "fc24a28f64e9594d03e689927bbcc2b6f3b94996ae831238158b46a3a5d9f80a",
+  "finished_utc": "2026-11-05T03:26:20.820416+00:00"
+}
