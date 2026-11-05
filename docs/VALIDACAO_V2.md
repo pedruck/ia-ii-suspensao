@@ -15,6 +15,6 @@ consultado; nenhuma reanálise será chamada de novo teste cego.
    cabeça LSTM; ARX e LSTM na trajetória. Estado: concluído. A regressão de características atingiu 100% e a de amplitude 96,7% neste alvo aproximado, superando 94,4% da LSTM. Não há demonstração de vantagem da LSTM para a classificação.
 4. Gerar perdas, dispersão de RMS, erros por classe/horizonte e resumo por repetição.
    Não considerar as repetições novos ensaios nem usar janelas como amostras
-   independentes para intervalos de confiança. Estado: pendente.
+   independentes para intervalos de confiança. Estado: concluído; seis figuras geradas e inspecionadas, 21 testes passaram. Resumos por passagem e média das mesmas fases exportados.
 5. Rodar fluxo completo em runtime limpo, exportar artefatos e atualizar artigo IEEE
    com as limitações e resultados adicionais. Estado: pendente.
