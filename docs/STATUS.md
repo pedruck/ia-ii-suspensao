@@ -5,6 +5,6 @@
 3. Sinais e rótulos: concluída. Testes analíticos de Wk, aceleração e frequência passaram. Rótulos aproximados são sensíveis à banda: C muda de classe com suavização a 40 Hz; não interpretar como conforto humano validado.
 4. Conjuntos configuráveis: concluída. Nove testes acumulados passaram no Colab; manifesto exportado. single_C: 92/15/54 janelas; all: 460/75/270. Repetições agrupadas por fase temporal; normalização exclusiva do treino.
 5. Referências e piloto: concluída. Onze testes acumulados e dois pilotos passaram no T4. Cabeça de log-RMS adicionada conforme decisão 001, usando somente desenvolvimento.
-6. Treinamento final: pendente.
+6. Treinamento final: concluída no T4. single_C/all, sementes 42/43/44, até 30 épocas. Seis checkpoints recarregados e verificados, hashes congelados antes do teste; registros em training.json e frozen.json.
 7. Avaliação científica: pendente.
 8. Artigo IEEE e reprodução: pendente.
