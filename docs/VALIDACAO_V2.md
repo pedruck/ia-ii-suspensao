@@ -10,7 +10,7 @@ consultado; nenhuma reanálise será chamada de novo teste cego.
    acelerômetro independente. Estado: concluído; 17 testes passaram no Colab, sensibilidade exportada.
 2. Acrescentar regressão ridge de log-RMS usando características do histórico e da
    pista futura conhecida, sem classe ISO ou resposta futura como entrada. Seleção
-   de regularização exclusivamente pela validação. Estado: pendente.
+   de regularização exclusivamente pela validação. Estado: concluído; 20 testes passaram, modelos e seleção de alpha exportados antes da comparação.
 3. Comparar separadamente trajetórias e indicador aprendido: ridge direto versus
    cabeça LSTM; ARX e LSTM na trajetória. Estado: pendente.
 4. Gerar perdas, dispersão de RMS, erros por classe/horizonte e resumo por repetição.

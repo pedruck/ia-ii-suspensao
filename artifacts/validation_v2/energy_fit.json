@@ -1,0 +1,138 @@
+{
+  "analysis": "exploratory v2, no test-based tuning",
+  "sha256": "eeaa8683f5a53714a3cd70bd93140e2cabf62a903c4d5e27ab06af48e487564e",
+  "fits": [
+    {
+      "experiment": "single_C",
+      "method": "road_only",
+      "train_windows": 92,
+      "validation_windows": 15,
+      "selected_alpha": 0.001,
+      "candidates": [
+        {
+          "alpha": 0.001,
+          "validation_log_mse": 0.003853584752354973
+        },
+        {
+          "alpha": 0.01,
+          "validation_log_mse": 0.003853633200703664
+        },
+        {
+          "alpha": 0.1,
+          "validation_log_mse": 0.003854117205680428
+        },
+        {
+          "alpha": 1.0,
+          "validation_log_mse": 0.003858909873481082
+        },
+        {
+          "alpha": 10.0,
+          "validation_log_mse": 0.0039025254392226743
+        },
+        {
+          "alpha": 100.0,
+          "validation_log_mse": 0.004122467846689623
+        }
+      ]
+    },
+    {
+      "experiment": "single_C",
+      "method": "ridge_features",
+      "train_windows": 92,
+      "validation_windows": 15,
+      "selected_alpha": 0.01,
+      "candidates": [
+        {
+          "alpha": 0.001,
+          "validation_log_mse": 0.002813903970981789
+        },
+        {
+          "alpha": 0.01,
+          "validation_log_mse": 0.0027016326144917017
+        },
+        {
+          "alpha": 0.1,
+          "validation_log_mse": 0.002714157112733287
+        },
+        {
+          "alpha": 1.0,
+          "validation_log_mse": 0.0031781678007463668
+        },
+        {
+          "alpha": 10.0,
+          "validation_log_mse": 0.003490841616970971
+        },
+        {
+          "alpha": 100.0,
+          "validation_log_mse": 0.0034880196211555265
+        }
+      ]
+    },
+    {
+      "experiment": "all",
+      "method": "road_only",
+      "train_windows": 460,
+      "validation_windows": 75,
+      "selected_alpha": 0.001,
+      "candidates": [
+        {
+          "alpha": 0.001,
+          "validation_log_mse": 0.0793736336963042
+        },
+        {
+          "alpha": 0.01,
+          "validation_log_mse": 0.07937700621628746
+        },
+        {
+          "alpha": 0.1,
+          "validation_log_mse": 0.07941075984520161
+        },
+        {
+          "alpha": 1.0,
+          "validation_log_mse": 0.07975112516370339
+        },
+        {
+          "alpha": 10.0,
+          "validation_log_mse": 0.0834242588344309
+        },
+        {
+          "alpha": 100.0,
+          "validation_log_mse": 0.13718815285803387
+        }
+      ]
+    },
+    {
+      "experiment": "all",
+      "method": "ridge_features",
+      "train_windows": 460,
+      "validation_windows": 75,
+      "selected_alpha": 0.001,
+      "candidates": [
+        {
+          "alpha": 0.001,
+          "validation_log_mse": 0.023042090521263565
+        },
+        {
+          "alpha": 0.01,
+          "validation_log_mse": 0.02323415267556791
+        },
+        {
+          "alpha": 0.1,
+          "validation_log_mse": 0.024275628822144783
+        },
+        {
+          "alpha": 1.0,
+          "validation_log_mse": 0.026610425414458412
+        },
+        {
+          "alpha": 10.0,
+          "validation_log_mse": 0.03347949643620049
+        },
+        {
+          "alpha": 100.0,
+          "validation_log_mse": 0.05208736773389757
+        }
+      ]
+    }
+  ]
+}
