@@ -29,6 +29,7 @@ reports=[]
 experiments=os.environ.get('EXPERIMENTS','single_C' if pilot else 'single_C,all').split(',')
 for name in experiments:
  cfg=json.loads(Path('configs/'+name+'.json').read_text());mean,std=fit_scaler(arrays,cfg)
+ (out/f'{name}_manifest.json').write_text(json.dumps({split:manifest(cfg,split) for split in ['train','validation','test']},indent=2))
  train=tensors(manifest(cfg,'train'),mean,std); val=tensors(manifest(cfg,'validation'),mean,std)
  coef=fit_arx(arrays,cfg['data']['classes'],mean,std)
  np.savez(out/f'{name}_arx.npz',coef=coef,mean=mean,std=std)

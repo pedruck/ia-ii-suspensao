@@ -26,8 +26,9 @@ for name in os.environ.get('EXPERIMENTS','single_C,all').split(','):
  for method in ['persistence','ARX','LSTM']:
   for seed in ([42,43,44] if method=='LSTM' else [0]):
    if method=='LSTM':
+    assert f'{name}_{seed}.pt' in {r['file'] for r in frozen['models']}, 'Model must be frozen before evaluation'
     ck=torch.load(out/f'{name}_{seed}.pt',map_location='cpu',weights_only=True)
-    model=SuspensionLSTM(64).cuda();model.load_state_dict(ck['state']);model.eval()
+    model=SuspensionLSTM(cfg['model']['hidden']).cuda();model.load_state_dict(ck['state']);model.eval()
     pred=[];aw=[]
     for j in range(0,len(rows),16):
      part=rows[j:j+16]

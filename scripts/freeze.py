@@ -4,8 +4,9 @@ os.chdir('/content/project');sys.path.insert(0,os.getcwd())
 import torch,numpy,scipy
 from src.model import SuspensionLSTM
 root=Path('/content/suspensao/results');rows=[]
-for name in ['single_C','all']:
- for seed in [42,43,44]:
+runs=json.loads((root/'training.json').read_text())
+for name in sorted({r['name'] for r in runs}):
+ for seed in [r['seed'] for r in runs if r['name']==name]:
   p=root/f'{name}_{seed}.pt'; ck=torch.load(p,map_location='cpu',weights_only=True)
   m=SuspensionLSTM(ck['config']['model']['hidden']);m.load_state_dict(ck['state']);m.eval()
   with torch.no_grad(): y,a=m(torch.zeros(1,1250,3),torch.zeros(1,1250,1))

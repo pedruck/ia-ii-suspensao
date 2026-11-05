@@ -12,3 +12,4 @@ paper/*.log
 paper/*.out
 paper/*.fls
 paper/*.fdb_latexmk
+!notebooks/04_demonstracao_output.ipynb

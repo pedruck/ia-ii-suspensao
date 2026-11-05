@@ -7,4 +7,4 @@
 5. Referências e piloto: concluída. Onze testes acumulados e dois pilotos passaram no T4. Cabeça de log-RMS adicionada conforme decisão 001, usando somente desenvolvimento.
 6. Treinamento final: concluída no T4. single_C/all, sementes 42/43/44, até 30 épocas. Seis checkpoints recarregados e verificados, hashes congelados antes do teste; registros em training.json e frozen.json.
 7. Avaliação científica: concluída. Treze testes acumulados passaram no Colab; modelos congelados avaliados sem retreino. LSTM global: acurácia 0,9444 e macro-F1 0,9406 nas três sementes; ARX teve menor erro temporal. Resultados completos exportados.
-8. Artigo IEEE e reprodução: pendente.
+8. Artigo IEEE e reprodução: concluída em 05/11/2026. PDF IEEEtran de três páginas compilado; demonstração executada; quatorze testes acumulados passaram no Colab; integridade dos seis pesos e RMSE exportado conferida; runtime T4 encerrado.

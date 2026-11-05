@@ -1,0 +1,2 @@
+# Preserve the upstream IEEEtran class verbatim, including its whitespace.
+paper/IEEEtran.cls -whitespace

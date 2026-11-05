@@ -1,6 +1,6 @@
 # Plano: previsão da suspensão e estimativa de conforto com LSTM
 
-Data: 04/11/2026. Estado: planejamento; treinamento ainda não iniciado.
+Data: 04/11/2026. Plano original, preservado como histórico. A execução e as decisões finais estão em docs/STATUS.md e docs/protocolo.md.
 
 ## Objetivo e enquadramento
 
