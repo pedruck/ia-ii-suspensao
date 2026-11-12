@@ -1,3 +1,5 @@
+> Atualização: artigo v8 apresenta as cinco classes em trajetórias e tabela de RMSE/MAE. Todas as 15 combinações classe–sinal foram conferidas diretamente das curvas, e o ZIP foi preparado para compilação isolada em quatro páginas.
+
 # Revisão do estudo exclusivamente LSTM — 12/11/2026
 
 Escopo confirmado pelo autor: tema II, somente aplicação LSTM. As três sementes,

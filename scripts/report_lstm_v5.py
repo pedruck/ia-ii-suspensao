@@ -81,21 +81,22 @@ plt.rcParams.update({'font.size':9,'axes.titlesize':9,'axes.labelsize':9,
     'legend.fontsize':8,'xtick.labelsize':8,'ytick.labelsize':8,'pdf.fonttype':42,
     'axes.spines.top':False,'axes.spines.right':False})
 colors=['#126991','#a64b17','#6d4485']
-fig,axes=plt.subplots(2,2,figsize=(7.05,2.75),sharex=True)
+fig,axes=plt.subplots(5,2,figsize=(7.05,4.2),sharex=True)
 selection=[]
-for col,cls in enumerate(['B','E']):
+for row,cls in enumerate('ABCDE'):
     j=next(j for j,k in enumerate(pred['keys']) if k[1]==cls)
     selection.append({'class':cls,'row':j,'seed':42,'start_sample':int(pred['start_samples'][j])})
     for ch,name in enumerate(['Carroceria','Roda']):
-        ax=axes[ch,col];t=np.arange(1250)/250
-        ax.plot(t,pred['true'][j,:,ch]*1000,c='black',lw=1,label='Medido processado')
-        ax.plot(t,pred['LSTM_42'][j,:,ch]*1000,c=colors[0],lw=.95,label='LSTM (semente 42)')
-        ax.set_ylabel(name+' (mm)');ax.grid(alpha=.15)
-        if ch==0:ax.set_title('Classe '+cls+' — primeira janela válida')
-        else:ax.set_xlabel('Tempo futuro (s)')
+        ax=axes[row,ch];t=np.arange(1250)/250
+        ax.plot(t,pred['true'][j,:,ch]*1000,c='black',lw=.85,label='Medido processado')
+        ax.plot(t,pred['LSTM_42'][j,:,ch]*1000,c=colors[0],lw=.85,label='LSTM (semente 42)')
+        ax.set_ylabel('Classe '+cls+'\n(mm)',fontsize=8);ax.grid(alpha=.15)
+        ax.tick_params(labelsize=7)
+        if row==0:ax.set_title(name)
+        if row==4:ax.set_xlabel('Tempo futuro (s)')
 handles,texts=axes[0,0].get_legend_handles_labels()
-fig.legend(handles,texts,loc='upper center',ncol=2,bbox_to_anchor=(.5,1.04),frameon=False)
-fig.tight_layout(pad=.5,rect=(0,0,1,.96));save(fig,'forecast')
+fig.legend(handles,texts,loc='upper center',ncol=2,bbox_to_anchor=(.5,1.015),frameon=False)
+fig.tight_layout(pad=.4,h_pad=.25,rect=(0,0,1,.97));save(fig,'forecast')
 
 fig,ax=plt.subplots(figsize=(3.45,2.6))
 for (ch,name),color in zip(channels,colors):
@@ -151,8 +152,36 @@ for h in horizons:
 report+=['','## Classes em 5 s','', '| Classe | Carroceria | Roda | Curso relativo |','|---|---:|---:|---:|']
 for c in 'ABCDE':
     report.append(f'| {c} | '+' | '.join(f'{values(c,5,ch).mean():.6f}' for ch,name in channels)+' |')
+
+class_rows=[]
+for cls in 'ABCDE':
+    for ch,name in channels:
+        rmse=values(cls,5,ch);mae=values(cls,5,ch,'mae')
+        class_rows.append({'class':cls,'signal':ch,'windows':54,'seeds':3,
+            'rmse_mean_mm':float(rmse.mean()),'rmse_sd_mm':float(rmse.std(ddof=1)),
+            'mae_mean_mm':float(mae.mean()),'mae_sd_mm':float(mae.std(ddof=1))})
+with (art/'class_metrics.csv').open('w') as f:
+    writer=csv.DictWriter(f,fieldnames=list(class_rows[0]),lineterminator='\n')
+    writer.writeheader();writer.writerows(class_rows)
+tex=[r'% Generated from all class windows and all three LSTM seeds.',
+     r'\begin{table*}[t]',
+     r'\caption{Erros da LSTM por classe no horizonte completo de cinco segundos, em mm.}',
+     r'\label{tab:class-errors}',r'\centering\small',r'\begin{tabular}{lrrrrrr}\toprule',
+     r'& \multicolumn{3}{c}{RMSE} & \multicolumn{3}{c}{MAE}\\',
+     r'Classe & Carroceria & Roda & Curso relativo & Carroceria & Roda & Curso relativo\\\midrule']
+for cls in 'ABCDE':
+    cells=[]
+    for metric in ['rmse','mae']:
+        for ch,name in channels:
+            v=values(cls,5,ch,metric)
+            cells.append('$'+fmt(v.mean())+r'\pm'+fmt(v.std(ddof=1))+'$')
+    tex.append(cls+' & '+' & '.join(cells)+r'\\')
+tex += [r'\bottomrule\end{tabular}',
+        r'\parbox{0.96\textwidth}{\footnotesize Média $\pm$ desvio padrão amostral entre as sementes 42, 43 e 44. Cada métrica usa todas as 54 janelas da classe, incluindo 18 fases repetidas em três períodos. Os exemplos da figura não determinam os erros desta tabela.}',
+        r'\end{table*}']
+(root/'paper/results_classes_v8.tex').write_text('\n'.join(tex)+'\n')
 (root/'docs/RESULTADOS_LSTM_V5.md').write_text('\n'.join(report)+'\n')
-(art/'figure_selection.json').write_text(json.dumps({'rule':'seed 42; first valid test window in B and E, unchanged','examples':selection},indent=2))
+(art/'figure_selection.json').write_text(json.dumps({'rule':'seed 42; first valid test window in each class A through E; no selection by error','examples':selection},indent=2))
 (art/'report_verification.json').write_text(json.dumps({'metric_rows_recomputed':len(rows),
     'all_90_rows_match_reference':True,'no_training':True,
     'predictions_sha256':hashlib.sha256((art/'predictions.npz').read_bytes()).hexdigest()},indent=2))

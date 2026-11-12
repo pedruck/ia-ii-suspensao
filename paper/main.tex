@@ -66,7 +66,7 @@ Há 54 janelas de teste por classe: 18 fases repetidas em três períodos. As 27
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.96\textwidth]{forecast.pdf}
-\caption{Deslocamentos processados medidos e previstos em cinco segundos. Primeira janela válida de B e E; LSTM global, semente 42. Classes e janela são fixadas sem seleção pelo erro. Escalas verticais diferem entre classes.}
+\caption{Deslocamentos processados medidos e previstos em cinco segundos. Primeira janela válida de cada classe A--E; LSTM global, semente 42. Coluna esquerda: carroceria; direita: roda. Janelas escolhidas por ordem temporal, sem seleção pelo erro. Escalas verticais variam entre painéis.}
 \label{fig:forecast}
 \end{figure*}
 
@@ -93,26 +93,17 @@ A métrica principal é o RMSE no prefixo da previsão:
 \end{equation}
 para $q\in\{z_s,z_u,d\}$ e $h\in\{0{,}1;0{,}5;1;2;5\}$ s. Incluem-se todas as amostras até $h$, não somente o instante final. São prefixos da mesma saída de cinco segundos, não cinco redes. Reportam-se também MAE e erros por classe, em mm. O RMSE global agrupa amostras antes da raiz, não sendo a média dos RMSE das classes.
 
-Na LSTM, apresentam-se média e desvio padrão amostral das métricas das três sementes. Essa dispersão mede variabilidade de treinamento, não incerteza para novas pistas. Não se fazem testes de significância que suponham independência das janelas repetidas. As figuras temporais usam a semente 42 e a primeira janela válida em B e E, regra fixada antes da nova inferência.
+Na LSTM, apresentam-se média e desvio padrão amostral das métricas das três sementes. Essa dispersão mede variabilidade de treinamento, não incerteza para novas pistas. Não se fazem testes de significância que suponham independência das janelas repetidas. As figuras temporais usam a semente 42 e a primeira janela válida de cada classe A--E, por uma regra de ordem temporal. As métricas por classe incluem todas as suas janelas e as três sementes, não apenas os exemplos ilustrados.
 
 O indicador secundário é $a_w=\sqrt{\sum G_{aa}(f_k)|W_k(f_k)|^2\Delta f}$, com periodograma Hann, ponderação vertical aproximada e banda de 0,5--80 Hz \cite{vasquez}. O rótulo de maior intensidade é $a_w\geq0{,}315$ m/s$^2$, simplificando faixas discutidas na literatura \cite{comfort}. A classificação utiliza exclusivamente a cabeça direta da LSTM. O indicador derivado da aceleração prevista e o estimado pela cabeça agregada são quantidades distintas; a perda não força sua igualdade. Frequência em Hz e intensidade em m/s$^2$ são grandezas distintas; até 2 Hz não garante conforto.
 
+\input{results_classes_v8.tex}
+
 \section{Resultados e Discussão}
 \subsection{Trajetórias e horizontes}
-A Tabela~\ref{tab:trajectory} resume os erros no horizonte completo. O RMSE de carroceria foi $\BodyLSTMRMSE\pm\BodyLSTMRMSESD$ mm; entre sementes, variou de 0,4626 a 0,5184 mm. Os erros de roda e curso relativo foram maiores em valores absolutos. Como o curso é a diferença entre as duas saídas, seu erro depende tanto da magnitude quanto da relação temporal entre os erros de carroceria e roda. Não se pode obtê-lo subtraindo os RMSE individuais.
+No horizonte completo, a avaliação global agrega as cinco classes. O RMSE de carroceria foi $\BodyLSTMRMSE\pm\BodyLSTMRMSESD$ mm; entre sementes, variou de 0,4626 a 0,5184 mm. Os erros de roda e curso relativo foram maiores em valores absolutos. Como o curso é a diferença entre as duas saídas, seu erro depende tanto da magnitude quanto da relação temporal entre os erros de carroceria e roda. Não se pode obtê-lo subtraindo os RMSE individuais.
 
-\begin{table}[t]
-\caption{Erros da LSTM acumulados em cinco segundos, em mm.}
-\label{tab:trajectory}
-\centering\small
-\begin{tabular}{lrr}\toprule
-Sinal & RMSE & MAE\\\midrule
-Carroceria & $\BodyLSTMRMSE\pm\BodyLSTMRMSESD$ & $\BodyLSTMMAE\pm\BodyLSTMMAESD$\\
-Roda & $\WheelLSTMRMSE\pm\WheelLSTMRMSESD$ & $\WheelLSTMMAE\pm\WheelLSTMMAESD$\\
-Curso relativo & $\StrokeLSTMRMSE\pm\StrokeLSTMRMSESD$ & $\StrokeLSTMMAE\pm\StrokeLSTMMAESD$\\\bottomrule
-\end{tabular}
-\parbox{\columnwidth}{\footnotesize Média $\pm$ desvio padrão amostral das métricas nas sementes 42, 43 e 44, nas mesmas 270 janelas.}
-\end{table}
+
 
 O MAE de carroceria foi \BodyLSTMMAE~mm, inferior ao RMSE de \BodyLSTMRMSE~mm. A diferença entre as duas medidas evidencia a influência de erros de maior magnitude na avaliação quadrática. Essas métricas não estabelecem um limite aceitável para uma aplicação real.
 
@@ -128,18 +119,13 @@ Reduzir o RMSE acumulado ao ampliar $h$ não significa melhorar a cada instante:
 \end{figure}
 
 \subsection{Diferenças entre classes}
-A Fig.~\ref{fig:classes} evidencia heterogeneidade encoberta pela agregação. O RMSE médio de carroceria foi 0,0948 mm em A, 0,1328 em B, 0,2044 em C, 0,3277 em D e 0,9968 em E. A classe E também apresentou os maiores erros de roda e curso: 1,3398 e 1,5216 mm. Esses valores são erros absolutos; não demonstram, sem uma normalização pela amplitude da resposta, que a qualidade relativa se degrade na mesma proporção.
+A Tabela~\ref{tab:class-errors} apresenta RMSE e MAE de cada classe separadamente, com dispersão entre sementes, e evidencia heterogeneidade encoberta pela agregação. O RMSE médio de carroceria foi 0,0948 mm em A, 0,1328 em B, 0,2044 em C, 0,3277 em D e 0,9968 em E. A classe E também apresentou os maiores erros de roda e curso: 1,3398 e 1,5216 mm. Esses valores são erros absolutos; não demonstram, sem uma normalização pela amplitude da resposta, que a qualidade relativa se degrade na mesma proporção.
 
 A classe E influencia fortemente o RMSE global, pois resíduos maiores são elevados ao quadrado. O comportamento agregado não representa igualmente a dificuldade de cada classe. Como A--E participam do treino e seus perfis são proporcionais em cada realização, a análise por classe caracteriza níveis de excitação conhecidos, sem demonstrar transferência para novas formas de pista.
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=\columnwidth]{classes.pdf}
-\caption{RMSE da LSTM por classe no horizonte completo, em escala vertical logarítmica. Cada classe contém 54 janelas correlacionadas. Pontos: médias de três sementes; barras: um desvio padrão entre sementes.}
-\label{fig:classes}
-\end{figure}
 
-A Fig.~\ref{fig:forecast} ilustra movimentos acompanhados e oscilações previstas que não coincidem com a medição em E. Um erro agregado reduzido não garante reprodução fiel de cada oscilação. São exemplos por ordem temporal; a análise quantitativa inclui todas as janelas e três sementes.
+
+A Fig.~\ref{fig:forecast} apresenta as cinco classes separadamente e ilustra movimentos acompanhados e oscilações previstas que não coincidem com a medição, especialmente em E. Um erro agregado reduzido não garante reprodução fiel de cada oscilação. São exemplos por ordem temporal; a análise quantitativa inclui todas as janelas e três sementes.
 
 \subsection{Indicador secundário}
 O MAE de $a_w$ foi $\LstmAwMAE$ m/s$^2$ na LSTM. As três sementes acertaram os 270 rótulos: 108 de menor intensidade e 162 de maior intensidade. A matriz de confusão é diagonal, com os mesmos totais nas três execuções. Isso não valida a trajetória de aceleração, pois a decisão da rede usa uma cabeça agregada distinta.

@@ -1,0 +1,16 @@
+% Generated from all class windows and all three LSTM seeds.
+\begin{table*}[t]
+\caption{Erros da LSTM por classe no horizonte completo de cinco segundos, em mm.}
+\label{tab:class-errors}
+\centering\small
+\begin{tabular}{lrrrrrr}\toprule
+& \multicolumn{3}{c}{RMSE} & \multicolumn{3}{c}{MAE}\\
+Classe & Carroceria & Roda & Curso relativo & Carroceria & Roda & Curso relativo\\\midrule
+A & $0,0948\pm0,0021$ & $0,0980\pm0,0021$ & $0,0725\pm0,0233$ & $0,0782\pm0,0023$ & $0,0789\pm0,0046$ & $0,0579\pm0,0235$\\
+B & $0,1328\pm0,0021$ & $0,1190\pm0,0029$ & $0,1142\pm0,0086$ & $0,1027\pm0,0023$ & $0,0926\pm0,0034$ & $0,0865\pm0,0086$\\
+C & $0,2044\pm0,0033$ & $0,1588\pm0,0087$ & $0,2446\pm0,0068$ & $0,1638\pm0,0057$ & $0,1185\pm0,0078$ & $0,1923\pm0,0068$\\
+D & $0,3277\pm0,0287$ & $0,2290\pm0,0098$ & $0,3278\pm0,0039$ & $0,2596\pm0,0225$ & $0,1756\pm0,0050$ & $0,2566\pm0,0054$\\
+E & $0,9968\pm0,0646$ & $1,3398\pm0,0523$ & $1,5216\pm0,0489$ & $0,7279\pm0,0452$ & $0,9136\pm0,0379$ & $1,0539\pm0,0349$\\
+\bottomrule\end{tabular}
+\parbox{0.96\textwidth}{\footnotesize Média $\pm$ desvio padrão amostral entre as sementes 42, 43 e 44. Cada métrica usa todas as 54 janelas da classe, incluindo 18 fases repetidas em três períodos. Os exemplos da figura não determinam os erros desta tabela.}
+\end{table*}

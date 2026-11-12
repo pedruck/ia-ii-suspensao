@@ -1,0 +1,12 @@
+{
+  "class_signal_rows_checked": 15,
+  "all_class_windows": 54,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "independent_float64_tolerance_mm": 2e-06,
+  "all_class_examples_first_window": true,
+  "no_training_or_inference": true
+}

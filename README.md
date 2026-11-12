@@ -28,7 +28,8 @@ Não houve retreinamento nem nova inferência para a revisão editorial atual.
 | Curso relativo | 0,7073 ± 0,0211 | 0,3295 ± 0,0094 |
 
 A avaliação usa prefixos de 0,1/0,5/1/2/5 s da mesma previsão. Erros variam por
-horizonte e classe. As três sementes acertam os rótulos de intensidade, separados
+horizonte e classe. A Tabela II apresenta RMSE e MAE separados para A–E, e os
+exemplos temporais ilustram a primeira janela válida de cada uma das cinco classes. As três sementes acertam os rótulos de intensidade, separados
 por classe neste recorte. Isso não valida as curvas de aceleração nem conforto.
 
 ## Regenerar o relatório e o artigo
@@ -51,7 +52,7 @@ Na pasta `paper`, compilar duas vezes:
 pdflatex -interaction=nonstopmode -halt-on-error main.tex
 ```
 
-Na raiz, `python scripts/package_delivery_v7.py` gera o ZIP Overleaf e um PDF em
+Na raiz, `python scripts/package_delivery_v8.py` gera o ZIP Overleaf e um PDF em
 Downloads, verifica os hashes e compila o pacote isoladamente. A entrega exige
 árvore Git limpa para vincular o manifesto a uma revisão exata.
 
@@ -69,4 +70,4 @@ somente dos modelos globais A–E. Não há novos resultados especializados.
 
 Versões anteriores dos artigos, análises e scripts permanecem no repositório como
 histórico. O manuscrito e os pacotes atuais usam somente os resultados LSTM.
-A versão anterior à mudança de foco foi preservada em `paper/main_v6.*`.
+A versão anterior ao detalhamento das cinco classes foi preservada em `paper/main_v7.*`.
