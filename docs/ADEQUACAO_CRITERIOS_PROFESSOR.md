@@ -1,4 +1,4 @@
-# Adequação aos critérios do professor — aplicação da LSTM, tema II
+# Adequação aos critérios do professor — previsão de trajetórias com LSTM
 
 As duas avaliações anteriores fornecidas pelo autor orientam a apresentação do
 estudo atual. Seus comentários não constituem uma nota deste artigo. O trabalho
@@ -7,10 +7,10 @@ horizonte, com os mesmos pesos conjuntos e três sementes.
 
 | Critério | Aplicação no texto atual |
 |---|---|
-| I. Apresentação do problema | Objetivo e pergunta explícitos; previsão de trajetórias de suspensão com pista futura conhecida; vínculo com o tema II. |
+| I. Apresentação do problema | Objetivo e pergunta explícitos; previsão de trajetórias de suspensão com pista futura conhecida; condições de entrada e alvos explícitos. |
 | II. Metodologia | Dataset com DOI e versão; filtros causais; partições por fase e período; normalização de treino; entradas e saídas; arquitetura, perda, treinamento e seleção de checkpoints descritos. |
 | III. Resultados | RMSE e MAE com média e DP amostral de três sementes; trajetórias das cinco classes, figura por horizonte e tabela por classe; resumo consistente com a tabela; 90 linhas recalculadas das previsões preservadas. |
-| IV. Discussão e conclusões | Erro por horizonte e classe, influência de resíduos grandes, desvios locais e limites da classificação perfeita. Sem inferir causas físicas não medidas ou validade de conforto humano. |
+| IV. Discussão e conclusões | Erro por horizonte e classe, relação entre RMSE e MAE, escala dos movimentos e desvios locais. Limites de interpretação física e de uso operacional explícitos. |
 | V. Bibliografia | Fontes originais da LSTM e encoder–decoder, livro-base, dataset versionado, referências da ponderação vibracional e evidências computacionais do projeto. |
 
 Cuidados derivados dos comentários anteriores:

@@ -1,4 +1,4 @@
-# Estudo de aplicação da LSTM — tema II
+# Previsão de trajetórias de suspensão com LSTM
 
 Três sementes da mesma configuração conjunta de até 120 épocas. Sem novo treinamento.
 RMSE e MAE nos prefixos [0,h), média e desvio padrão amostral entre sementes.

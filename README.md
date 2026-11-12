@@ -1,15 +1,15 @@
 # Previsão de trajetórias de suspensão com LSTM
 
-Projeto de IA II, **tema II: aplicação de algoritmos à solução de um problema**.
+Projeto de previsão de trajetórias de suspensão com LSTM.
 O estudo atual apresenta exclusivamente uma LSTM aplicada à previsão de cinco
 segundos de carroceria, roda e curso relativo, com cinco segundos de histórico e
-**pista futura conhecida**. O RMS ponderado é uma saída secundária de intensidade,
-sem validação de conforto humano.
+**pista futura conhecida**. Os resultados descrevem erros de deslocamento em
+milímetros e sua variação entre classes e horizontes.
 
 - [Artigo IEEE atual](paper/main.pdf).
 - [Resultados da aplicação LSTM](docs/RESULTADOS_LSTM_V5.md).
 - [Adequação aos critérios do professor](docs/ADEQUACAO_CRITERIOS_PROFESSOR.md).
-- [Decisão de escopo atual](docs/decisions/003-lstm-application-only.md).
+- [Decisão de escopo atual](docs/decisions/004-trajectory-results-only.md).
 - [Previsões, métricas e proveniência](artifacts/lstm_study_v5).
 - [Figuras atuais](figures/lstm_study_v5).
 
@@ -29,8 +29,9 @@ Não houve retreinamento nem nova inferência para a revisão editorial atual.
 
 A avaliação usa prefixos de 0,1/0,5/1/2/5 s da mesma previsão. Erros variam por
 horizonte e classe. A Tabela II apresenta RMSE e MAE separados para A–E, e os
-exemplos temporais ilustram a primeira janela válida de cada uma das cinco classes. As três sementes acertam os rótulos de intensidade, separados
-por classe neste recorte. Isso não valida as curvas de aceleração nem conforto.
+exemplos temporais ilustram a primeira janela válida de cada uma das cinco classes.
+O erro médio não limita o erro de cada ponto. Sem normalização pela amplitude ou
+tolerância operacional, valores em milímetros não demonstram adequação ao uso real.
 
 ## Regenerar o relatório e o artigo
 
@@ -52,7 +53,7 @@ Na pasta `paper`, compilar duas vezes:
 pdflatex -interaction=nonstopmode -halt-on-error main.tex
 ```
 
-Na raiz, `python scripts/package_delivery_v8.py` gera o ZIP Overleaf e um PDF em
+Na raiz, `python scripts/package_delivery_v9.py` gera o ZIP Overleaf e um PDF em
 Downloads, verifica os hashes e compila o pacote isoladamente. A entrega exige
 árvore Git limpa para vincular o manifesto a uma revisão exata.
 
@@ -70,4 +71,4 @@ somente dos modelos globais A–E. Não há novos resultados especializados.
 
 Versões anteriores dos artigos, análises e scripts permanecem no repositório como
 histórico. O manuscrito e os pacotes atuais usam somente os resultados LSTM.
-A versão anterior ao detalhamento das cinco classes foi preservada em `paper/main_v7.*`.
+A versão anterior desta revisão foi preservada em `paper/main_v8.*`.

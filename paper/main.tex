@@ -15,7 +15,7 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-Este trabalho aplica uma rede Long Short-Term Memory (LSTM) à previsão de cinco segundos de deslocamentos de carroceria e roda em uma suspensão experimental, condicionada à pista futura conhecida. Utilizam-se dados públicos associados às classes ISO 8608 A--E, com histórico de cinco segundos e separação temporal entre treino e validação. Avalia-se uma configuração conjunta com três sementes, treinada com limite de 120 épocas. A análise considera trajetórias, curso relativo e erros acumulados em cinco horizontes, em uma realização com supressão de harmônicos. Em cinco segundos, os RMSE médios foram \BodyLSTMRMSE~mm para carroceria, \WheelLSTMRMSE~mm para roda e \StrokeLSTMRMSE~mm para curso relativo. O desvio padrão entre sementes do RMSE de carroceria foi \BodyLSTMRMSESD~mm. A classe E concentrou os maiores erros absolutos, e o erro acumulado variou de forma não monotônica com o horizonte. A classificação secundária de intensidade atingiu 100\% nas três sementes, mas a separação dos rótulos por classe limita sua interpretação. Os resultados caracterizam os erros desta aplicação de previsão condicionada, sem validar conforto humano ou generalização a novas suspensões.
+Este trabalho aplica uma rede Long Short-Term Memory (LSTM) à previsão de cinco segundos de deslocamentos de carroceria e roda em uma suspensão experimental, condicionada à pista futura conhecida. Utilizam-se dados públicos associados às classes ISO 8608 A--E, com histórico de cinco segundos e separação temporal entre treino e validação. Avalia-se uma configuração conjunta com três sementes, treinada com limite de 120 épocas. A análise considera trajetórias, curso relativo e erros acumulados em cinco horizontes, em uma realização com supressão de harmônicos. Em cinco segundos, os RMSE médios foram \BodyLSTMRMSE~mm para carroceria, \WheelLSTMRMSE~mm para roda e \StrokeLSTMRMSE~mm para curso relativo. O desvio padrão entre sementes do RMSE de carroceria foi \BodyLSTMRMSESD~mm. A classe E concentrou os maiores erros absolutos, e o erro acumulado variou de forma não monotônica com o horizonte. Os resultados caracterizam a reprodução das respostas medidas, com diferenças de erro entre sinais, horizontes e classes, sem demonstrar generalização a novas suspensões.
 
 \end{abstract}
 \begin{IEEEkeywords}
@@ -23,24 +23,22 @@ LSTM, previsão de trajetórias, suspensão experimental, séries temporais, vib
 \end{IEEEkeywords}
 
 \section{Introdução}
-Antecipar movimentos de uma suspensão pode auxiliar a análise de sua resposta a irregularidades da pista. A tarefa envolve uma sequência de deslocamentos: um indicador único de intensidade não mostra quando ocorrem oscilações, sua amplitude ou a diferença entre os movimentos da carroceria e da roda. Redes recorrentes permitem aprender representações do histórico temporal \cite{lstm,goodfellow}, mas sua adequação deve ser avaliada por erros das sequências previstas.
+Antecipar movimentos de uma suspensão pode auxiliar a análise de sua resposta a irregularidades da pista. A tarefa envolve estimar a evolução dos deslocamentos: amplitude, instante e forma das oscilações determinam como a previsão representa o movimento da carroceria e da roda. Redes recorrentes permitem aprender representações do histórico temporal \cite{lstm,goodfellow}, mas sua adequação deve ser avaliada por erros das sequências previstas.
 
-O objetivo é aplicar uma LSTM à previsão condicionada de cinco segundos de resposta de uma suspensão experimental. A pergunta de pesquisa é: \emph{com que erro a rede prevê as trajetórias de carroceria e roda, e como esse erro varia por horizonte e classe de excitação?} O trabalho se enquadra no tema II da disciplina, aplicação de algoritmos à solução de um problema proposto.
+O objetivo é aplicar uma LSTM à previsão condicionada de cinco segundos de resposta de uma suspensão experimental. A pergunta de pesquisa é: \emph{com que erro a rede prevê as trajetórias de carroceria e roda, e como esse erro varia por horizonte e classe de excitação?}
 
-As contribuições são formular um fluxo de previsão multivariada com LSTM, avaliar os erros por horizonte e classe de excitação, analisar o curso relativo derivado e distinguir previsão de trajetórias de classificação de um indicador. Mantêm-se arquitetura, perda e seleção por validação. A pista futura é conhecida; não se avaliam previsão de pista desconhecida, controle da suspensão ou conforto validado de passageiros.
+As contribuições são formular um fluxo de previsão multivariada com LSTM, avaliar os erros por horizonte e classe de excitação, analisar o curso relativo derivado e delimitar o significado dos resíduos de previsão. Mantêm-se arquitetura, perda e seleção por validação. O problema é condicionado à pista futura conhecida; as saídas avaliadas são os deslocamentos e o curso relativo.
 
 \section{Trabalhos Relacionados}
 Hochreiter e Schmidhuber propõem a LSTM para dependências sequenciais \cite{lstm}. Goodfellow et al. discutem recorrência e compartilhamento de parâmetros \cite{goodfellow}; Sutskever et al. empregam uma estrutura encoder--decoder para mapear sequências \cite{seq2seq}. Esses fundamentos motivam resumir o histórico físico e decodificar a resposta sob uma excitação conhecida, sem implicar que uma rede seja necessária para qualquer suspensão.
 
 Foo e Tan disponibilizam perfis de pista e deslocamentos de carroceria e roda \cite{dataset}. Aqui, esse recurso permite aplicar a LSTM a uma relação entre excitação conhecida e resposta futura medida. O protocolo transfere o processamento sequencial para o domínio físico, mantendo explícitas as condições de observação da bancada.
 
-Na avaliação vibracional, ponderação em frequência e condições de medição influenciam a interpretação da intensidade \cite{comfort,vasquez}. O RMS ponderado permanece como análise secundária. A avaliação principal usa deslocamentos medidos e processados, sem fundamentar a contribuição somente em rótulos definidos pelo próprio processamento.
-
 \section{Metodologia}
 \subsection{Dados e formulação}
 Utiliza-se a versão 3 do conjunto de Foo e Tan, DOI 10.5281/zenodo.17242919 \cite{dataset}. A bancada representa uma suspensão de um quarto de veículo, com deslocamentos de carroceria $z_s$ e roda $z_u$, excitada pela pista $z_r$. Cada perfil tem 100.000 amostras a 1.000 Hz; as respostas abrangem quatro repetições de 100 s. Há realizações sem e com supressão de harmônicos. O protocolo descarta o primeiro período.
 
-As classes A--E são níveis de amplitude: dentro de cada realização, seus perfis são proporcionais, com resíduos relativos da ordem de $10^{-16}$ na auditoria \cite{repo}. Não representam cinco formas independentes de pista. Não há varredura de massa, rigidez e amortecimento, aceleração medida no assento ou relatos de passageiros.
+As classes A--E são níveis de amplitude: dentro de cada realização, seus perfis são proporcionais, com resíduos relativos da ordem de $10^{-16}$ na auditoria \cite{repo}. Não representam cinco formas independentes de pista. Não há varredura de massa, rigidez e amortecimento.
 
 Para cada origem $t$, a entrada contém cinco segundos de histórico de $z_r,z_s,z_u$ e os cinco segundos seguintes de $z_r$. A rede estima trajetórias futuras $\hat z_s,\hat z_u,\hat a_s$, sendo $a_s$ a aceleração derivada. O curso relativo é calculado por $\hat d=\hat z_s-\hat z_u$, sem nova cabeça ou treinamento. Os resultados principais são erros de $z_s,z_u,d$.
 
@@ -71,14 +69,14 @@ Há 54 janelas de teste por classe: 18 fases repetidas em três períodos. As 27
 \end{figure*}
 
 \subsection{Rede e treinamento preservados}
-Um encoder LSTM recebe os três canais históricos. Um decoder LSTM recebe a pista futura e os estados do encoder, sem respostas futuras reais. Ambos têm uma camada de 64 unidades; uma projeção linear fornece três trajetórias. Outra projeção, sobre a média temporal dos estados do decoder, estima $\log a_w$, o indicador agregado. São 35.076 parâmetros \cite{repo}.
+Um encoder LSTM recebe os três canais históricos. Um decoder LSTM recebe a pista futura e os estados do encoder, sem respostas futuras reais. Ambos têm uma camada de 64 unidades; uma projeção linear fornece três trajetórias. Uma projeção auxiliar, sobre a média temporal dos estados do decoder, estima $\log a_w$, sendo $a_w$ o RMS ponderado da aceleração derivada. Essa saída contínua participa do treinamento original, mas seus resultados não compõem a avaliação de trajetórias. São 35.076 parâmetros \cite{repo}.
 
 Preserva-se a função objetivo conjunta:
 \begin{equation}
 \mathcal L=\operatorname{MSE}(\hat{\boldsymbol y}_n,\boldsymbol y_n)
 +0{,}2\operatorname{MSE}(\widehat{\log a_w},\log a_w),
 \end{equation}
-em que $\boldsymbol y_n$ contém deslocamentos e aceleração normalizados. O curso relativo não é um alvo adicional. Não se impõe consistência física entre aceleração prevista, derivada do deslocamento previsto e cabeça do indicador.
+em que $\boldsymbol y_n$ contém deslocamentos e aceleração normalizados. O curso relativo não é um alvo adicional. O RMS auxiliar é calculado com periodograma Hann e ponderação vertical aproximada na banda 0,5--80 Hz \cite{vasquez}. A função objetivo e sua seleção são preservadas; não se impõe consistência física entre a aceleração prevista e a derivada do deslocamento previsto.
 
 Os pesos foram treinados com Adam, taxa $10^{-3}$, lote 16, norma do gradiente limitada a 1, no máximo 120 épocas e parada após 15 épocas sem melhora. Restaura-se a menor perda conjunta de validação, sem seleção pelo teste ou somente pela trajetória. Nas sementes 42, 43 e 44, executaram-se 116, 118 e 120 épocas, selecionando-se 101, 103 e 108, respectivamente. É uma configuração com três inicializações, não três arquiteturas.
 
@@ -95,8 +93,6 @@ para $q\in\{z_s,z_u,d\}$ e $h\in\{0{,}1;0{,}5;1;2;5\}$ s. Incluem-se todas as am
 
 Na LSTM, apresentam-se média e desvio padrão amostral das métricas das três sementes. Essa dispersão mede variabilidade de treinamento, não incerteza para novas pistas. Não se fazem testes de significância que suponham independência das janelas repetidas. As figuras temporais usam a semente 42 e a primeira janela válida de cada classe A--E, por uma regra de ordem temporal. As métricas por classe incluem todas as suas janelas e as três sementes, não apenas os exemplos ilustrados.
 
-O indicador secundário é $a_w=\sqrt{\sum G_{aa}(f_k)|W_k(f_k)|^2\Delta f}$, com periodograma Hann, ponderação vertical aproximada e banda de 0,5--80 Hz \cite{vasquez}. O rótulo de maior intensidade é $a_w\geq0{,}315$ m/s$^2$, simplificando faixas discutidas na literatura \cite{comfort}. A classificação utiliza exclusivamente a cabeça direta da LSTM. O indicador derivado da aceleração prevista e o estimado pela cabeça agregada são quantidades distintas; a perda não força sua igualdade. Frequência em Hz e intensidade em m/s$^2$ são grandezas distintas; até 2 Hz não garante conforto.
-
 \input{results_classes_v8.tex}
 
 \section{Resultados e Discussão}
@@ -104,8 +100,6 @@ O indicador secundário é $a_w=\sqrt{\sum G_{aa}(f_k)|W_k(f_k)|^2\Delta f}$, co
 No horizonte completo, a avaliação global agrega as cinco classes. O RMSE de carroceria foi $\BodyLSTMRMSE\pm\BodyLSTMRMSESD$ mm; entre sementes, variou de 0,4626 a 0,5184 mm. Os erros de roda e curso relativo foram maiores em valores absolutos. Como o curso é a diferença entre as duas saídas, seu erro depende tanto da magnitude quanto da relação temporal entre os erros de carroceria e roda. Não se pode obtê-lo subtraindo os RMSE individuais.
 
 
-
-O MAE de carroceria foi \BodyLSTMMAE~mm, inferior ao RMSE de \BodyLSTMRMSE~mm. A diferença entre as duas medidas evidencia a influência de erros de maior magnitude na avaliação quadrática. Essas métricas não estabelecem um limite aceitável para uma aplicação real.
 
 A Fig.~\ref{fig:horizons} mostra a dependência do horizonte. Em 0,1 s, os RMSE médios foram 0,6467, 0,7530 e 0,8302 mm para carroceria, roda e curso, respectivamente. Aos 0,5 s, esses valores caíram para 0,4939, 0,5904 e 0,6810 mm. Houve aumento em parte dos prefixos posteriores, e o comportamento não foi monotônico. Assim, o erro em cinco segundos não descreve isoladamente o início da previsão.
 
@@ -127,29 +121,30 @@ A classe E influencia fortemente o RMSE global, pois resíduos maiores são elev
 
 A Fig.~\ref{fig:forecast} apresenta as cinco classes separadamente e ilustra movimentos acompanhados e oscilações previstas que não coincidem com a medição, especialmente em E. Um erro agregado reduzido não garante reprodução fiel de cada oscilação. São exemplos por ordem temporal; a análise quantitativa inclui todas as janelas e três sementes.
 
-\subsection{Indicador secundário}
-O MAE de $a_w$ foi $\LstmAwMAE$ m/s$^2$ na LSTM. As três sementes acertaram os 270 rótulos: 108 de menor intensidade e 162 de maior intensidade. A matriz de confusão é diagonal, com os mesmos totais nas três execuções. Isso não valida a trajetória de aceleração, pois a decisão da rede usa uma cabeça agregada distinta.
+\subsection{Significado dos erros de previsão}
+O RMSE de 0,4837 mm da carroceria corresponde a uma média quadrática sobre todas as amostras e janelas, seguida da média das três sementes. Ele não significa que cada ponto previsto esteja a menos de 0,5 mm da medição. Resíduos maiores podem ocorrer em trechos específicos, como mostram os exemplos temporais. Já o MAE de 0,2665 mm dá o desvio absoluto médio, atribuindo menor peso relativo aos maiores resíduos.
 
-A--B têm somente rótulos abaixo do limiar; C--E, somente acima. O máximo de B é 0,2263 e o mínimo de C é 0,4276 m/s$^2$, deixando um intervalo em torno de 0,315. O conjunto não contém transições entre os dois rótulos dentro de uma mesma classe neste recorte. Os 100\% expressam concordância com uma regra numérica em um recorte pouco exigente, não antecipação geral de transições de conforto. A avaliação temporal permanece necessária apesar do acerto perfeito.
+A unidade em milímetros permite interpretar o tamanho absoluto dos desvios, mas sua adequação depende da escala do movimento e do uso pretendido. Um mesmo erro absoluto representa frações distintas de oscilações pequenas e grandes. Sem critério de tolerância definido e sem erro normalizado, os valores não bastam para afirmar precisão operacional. Em particular, o erro maior em E não demonstra sozinho uma degradação proporcional da qualidade relativa.
+
+O curso relativo resume o movimento entre carroceria e roda, sendo derivado das duas trajetórias previstas. Seu erro deve ser calculado nas diferenças de sinais, preservando o alinhamento temporal. Uma boa reprodução de cada deslocamento agregado não garante que seu movimento relativo ou seus picos sejam igualmente bem representados. O estudo quantifica resíduos ponto a ponto, sem medir separadamente erro de fase ou de localização dos picos.
 
 \section{Limitações e Reprodutibilidade}
 O teste já havia sido consultado antes da auditoria que ampliou o orçamento para 120 épocas e desta reformulação. Seleção por validação e congelamento dos pesos não criam um novo teste cego. Não se faz inferência causal sobre arquitetura ou efeito isolado de amplitude. Perfis proporcionais e repetições restringem a generalização; três sementes não substituem realizações independentes.
 
-A pista futura conhecida é uma hipótese forte desta aplicação da LSTM. Não há avaliação embarcada, latência medida ou controle em tempo real. Os filtros alteram os deslocamentos de referência, e a aceleração tem validade física incerta sem sensor independente. Na auditoria anterior, reduzir seu corte de 80 para 40 Hz mudou 53 dos 54 rótulos de C \cite{repo}. Isso mostra sensibilidade, sem provar que a energia removida seja ruído. Não se validam conforto humano ou conformidade integral à ISO 2631.
+A pista futura conhecida é uma hipótese forte desta aplicação da LSTM. Não há avaliação embarcada, latência medida ou controle em tempo real. Os filtros alteram os deslocamentos de referência, e a aceleração tem validade física incerta sem sensor independente. A presença de aceleração derivada na perda pode influenciar os pesos aprendidos; o estudo não isola essa contribuição. Os deslocamentos de referência também são filtrados, de modo que os erros caracterizam a reprodução desses sinais processados, e não de uma medição bruta ideal.
 
 Código, pesos e hashes estão preservados \cite{repo}. A inferência de origem pelo Colab CLI passou em 29 testes; as 90 linhas da avaliação LSTM por semente, classe e horizonte foram novamente recalculadas das trajetórias exportadas, sem diferenças dentro da tolerância numérica. O pacote registra previsões das três sementes, configurações e execução, com figuras regeneráveis. Versões anteriores permanecem arquivadas. Essas verificações sustentam consistência computacional, sem ampliar a diversidade física da base.
 
 \section{Conclusão}
 O estudo aplica uma LSTM à previsão condicionada de trajetórias de uma suspensão experimental, usando cinco segundos de histórico e cinco de pista futura conhecida. Com uma configuração conjunta e três sementes, os RMSE médios de cinco segundos foram 0,4837 mm na carroceria, 0,6159 mm na roda e 0,7073 mm no curso relativo. A avaliação por horizonte e classe identifica diferenças que seriam ocultadas por um único indicador agregado.
 
-A classificação de intensidade atingiu 100\%, mas a separação dos rótulos por classe e a sensibilidade do alvo ao processamento impedem interpretá-la como validação de conforto. A contribuição é uma aplicação reprodutível com erros e condições de uso delimitados. Novas realizações independentes, variações mecânicas e acelerometria de referência são passos futuros para avaliar generalização e validade física antes de extrapolar a outros veículos.
+Os resultados delimitam a reprodução das trajetórias processadas neste conjunto: o erro varia por classe e horizonte, e a proximidade média não garante fidelidade de cada oscilação. A contribuição é uma aplicação reprodutível com métricas físicas e condições de avaliação explícitas. Novas realizações independentes, variações mecânicas e acelerometria de referência são passos futuros para avaliar generalização e validade física antes de extrapolar a outros veículos.
 
-\begin{thebibliography}{7}
+\begin{thebibliography}{6}
 \bibitem{lstm} S. Hochreiter and J. Schmidhuber, ``Long Short-Term Memory,'' \emph{Neural Computation}, vol. 9, no. 8, pp. 1735--1780, 1997, doi: 10.1162/neco.1997.9.8.1735.
 \bibitem{goodfellow} I. Goodfellow, Y. Bengio, and A. Courville, \emph{Deep Learning}. MIT Press, 2016, cap. 10. [Online]. Disponível: \url{https://www.deeplearningbook.org/}
 \bibitem{seq2seq} I. Sutskever, O. Vinyals, and Q. V. Le, ``Sequence to Sequence Learning with Neural Networks,'' in \emph{Advances in Neural Information Processing Systems}, vol. 27, 2014, pp. 3104--3112.
 \bibitem{dataset} M. Foo and A. H. Tan, ``Benchmark vehicle suspension data based on ISO 8608 road profiles,'' Zenodo, v3, 2025, doi: 10.5281/zenodo.17242919.
-\bibitem{comfort} R. Wawryszczuk, E. Kardas-Cinal, J. Lejk, and M. Soko\l{}owski, ``Methods of Passenger Ride Comfort Evaluation---Tests for Metro Cars,'' \emph{Sensors}, vol. 23, no. 12, art. 5741, 2023, doi: 10.3390/s23125741.
 \bibitem{vasquez} F. A. Vasquez Stuardo, \emph{Optimisation of off-road motorcycle suspensions}, tese de doutorado, University of Southampton, 2020, apêndice A.4. [Online]. Disponível: \url{https://eprints.soton.ac.uk/448147/}
 \bibitem{repo} P. D. M. Reis, ``ia-ii-suspensao: código, pesos e evidências de reprodução,'' GitHub, 2026. [Online]. Disponível: \url{https://github.com/pedruck/ia-ii-suspensao}. Auditorias: \texttt{artifacts/audit\_v3}; estudo atual: \texttt{artifacts/lstm\_study\_v5}. Acesso em: 12 nov. 2026.
 \end{thebibliography}

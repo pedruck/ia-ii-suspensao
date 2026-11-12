@@ -62,13 +62,6 @@ for name,digest in provenance['checkpoint_hashes'].items():
     path=root/'artifacts/audit_v3/models'/name
     assert hashlib.sha256(path.read_bytes()).hexdigest()==digest
 
-indicators=[]
-for seed in seeds:
-    aw=pred[f'LSTM_{seed}_aw'];true=pred['true_aw']
-    indicators.append({'seed':seed,'mae_m_s2':float(np.mean(abs(aw-true))),
-                       'accuracy':float(np.mean((aw>=.315)==(true>=.315)))})
-(art/'indicators.json').write_text(json.dumps(indicators,indent=2))
-
 def values(cls,horizon,channel,metric='rmse'):
     return np.array([r[f'{channel}_{metric}_mm'] for r in rows if r['class']==cls and r['horizon_s']==horizon])
 
@@ -137,9 +130,8 @@ for ch,title in [('body','Body'),('wheel','Wheel'),('stroke','Stroke')]:
         v=values('ALL',5,ch,metric)
         for suffix,value in [('',v.mean()),('SD',v.std(ddof=1))]:
             macros.append('\\newcommand{\\'+title+'LSTM'+label+suffix+'}{'+fmt(value)+'}')
-macros.append('\\newcommand{\\LstmAwMAE}{'+fmt(np.mean([r['mae_m_s2'] for r in indicators]))+'}')
 (root/'paper/results_lstm_v5.tex').write_text('% Generated from unchanged LSTM forecasts\n'+'\n'.join(macros)+'\n')
-report=['# Estudo de aplicação da LSTM — tema II','',
+report=['# Previsão de trajetórias de suspensão com LSTM','',
         'Três sementes da mesma configuração conjunta de até 120 épocas. Sem novo treinamento.',
         'RMSE e MAE nos prefixos [0,h), média e desvio padrão amostral entre sementes.','',
         '| Sinal | RMSE 5 s (mm) | MAE 5 s (mm) |','|---|---:|---:|']
