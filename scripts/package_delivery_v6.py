@@ -40,12 +40,13 @@ with tempfile.TemporaryDirectory() as directory:
     with zipfile.ZipFile(article) as z: z.extractall(directory)
     for _ in range(2):
         result = subprocess.run(['pdflatex','-interaction=nonstopmode','-halt-on-error','main.tex'],
-                                cwd=directory, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+                                cwd=directory, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                                text=True, errors='replace')
         if result.returncode: raise RuntimeError(result.stdout[-5000:])
     info = subprocess.check_output(['pdfinfo','main.pdf'],cwd=directory,text=True)
     pages = int(next(line.split(':')[1] for line in info.splitlines() if line.startswith('Pages:')))
     assert pages <= 4, info
-    log = (Path(directory)/'main.log').read_text()
+    log = (Path(directory)/'main.log').read_text(errors='replace')
     assert 'undefined references' not in log and 'Overfull' not in log
     shutil.copyfile(Path(directory)/'main.pdf', output/'artigo_suspensao_v6_trajetorias.pdf')
 
