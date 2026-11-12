@@ -14,7 +14,7 @@ from src.dataset import manifest,fit_scaler
 from src.baselines import fit_arx,arx_predict
 from src.signals import weighted_rms
 root=Path('/content/suspensao');out=root/'results';out.mkdir(exist_ok=True)
-arrays=np.load(root/'prepared.npz');pilot=os.environ.get('PILOT','1')=='1'
+arrays=np.load(root/'prepared.npz');pilot=os.environ.get('PILOT','0')=='1'
 torch.set_num_threads(2)
 
 def tensors(rows,mean,std):
@@ -26,7 +26,7 @@ def tensors(rows,mean,std):
     return [torch.tensor(np.asarray(x),dtype=torch.float32) for x in [hist,roads,target,aw]]
 
 reports=[]
-experiments=os.environ.get('EXPERIMENTS','single_C' if pilot else 'single_C,all').split(',')
+experiments=os.environ.get('EXPERIMENTS','all').split(',')
 for name in experiments:
  cfg=json.loads(Path('configs/'+name+'.json').read_text());mean,std=fit_scaler(arrays,cfg)
  (out/f'{name}_manifest.json').write_text(json.dumps({split:manifest(cfg,split) for split in ['train','validation','test']},indent=2))

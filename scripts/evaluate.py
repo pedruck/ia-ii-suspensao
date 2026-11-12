@@ -18,7 +18,7 @@ for row in frozen['models']:
  assert hashlib.sha256((out/row['file']).read_bytes()).hexdigest()==row['sha256']
 records=[];summaries=[];examples={};predictions={}
 torch.set_num_threads(2)
-for name in os.environ.get('EXPERIMENTS','single_C,all').split(','):
+for name in os.environ.get('EXPERIMENTS','all').split(','):
  cfg=json.loads(Path(f'configs/{name}.json').read_text());rows=manifest(cfg,'test')
  arx=np.load(out/f'{name}_arx.npz');mean,std=arx['mean'],arx['std'];coef=arx['coef']
  truths=np.asarray([arrays[k][i:i+1250,1:] for k,i in rows])

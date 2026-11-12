@@ -12,4 +12,6 @@ class ProtocolTests(unittest.TestCase):
         import json
         from pathlib import Path
         for path in Path('configs').glob('*.json'):
-            validate(json.loads(path.read_text()))
+            config=validate(json.loads(path.read_text()))
+            self.assertEqual(config['training']['epochs'],120)
+            self.assertEqual(config['training']['patience'],15)

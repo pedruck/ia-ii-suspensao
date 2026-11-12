@@ -4,14 +4,23 @@ import torch
 from src.model import SuspensionLSTM
 from src.signals import weighted_rms,dominant_frequency
 
+def load_trajectory_model(checkpoint, device='cpu'):
+    """Load original or audited joint weights; reject an untrained trajectory head."""
+    ck=torch.load(checkpoint,map_location='cpu',weights_only=True)
+    if 'mode' in ck and ck['mode'] != 'joint_120':
+        raise ValueError('Only joint checkpoints have a trained trajectory output')
+    hidden=ck['state']['encoder.weight_hh_l0'].shape[1]
+    model=SuspensionLSTM(hidden).to(device)
+    model.load_state_dict(ck['state']);model.eval()
+    return model,ck
+
 def predict(checkpoint,history,future_road):
     history=np.asarray(history);future_road=np.asarray(future_road)
     if history.shape!=(1250,3) or future_road.shape!=(1250,1):
         raise ValueError('Expected history (1250,3) and future road (1250,1), sampled at 250Hz')
     if not np.isfinite(history).all() or not np.isfinite(future_road).all():
         raise ValueError('Inputs must be finite')
-    ck=torch.load(checkpoint,map_location='cpu',weights_only=True)
-    model=SuspensionLSTM(ck['config']['model']['hidden']);model.load_state_dict(ck['state']);model.eval()
+    model,ck=load_trajectory_model(checkpoint)
     mean=np.array(ck['mean']);std=np.array(ck['std'])
     h=torch.tensor((history-mean[:3])/std[:3],dtype=torch.float32).unsqueeze(0)
     r=torch.tensor((future_road-mean[0])/std[0],dtype=torch.float32).unsqueeze(0)

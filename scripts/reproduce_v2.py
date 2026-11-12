@@ -4,7 +4,7 @@ Run locally from repository root. All remote executions are sequential and logge
 No artifact from the original experiment is overwritten.
 """
 from pathlib import Path
-import subprocess,json,hashlib,datetime,zipfile,sys
+import subprocess,json,hashlib,datetime,zipfile,sys,base64
 root=Path(__file__).resolve().parents[1];run=root/'runs/reproduction_v2';run.mkdir(exist_ok=True,parents=True)
 state=run/'sessions.json';session='suspensao-repro-v2';base=['colab','--config',str(state)]
 report={'started_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'source_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(),'stages':[],'success':False}
@@ -20,7 +20,10 @@ def call(label,args,timeout=300):
 def remote(label,script,timeout=300,env=()):
  call(label,base+['exec','-s',session,'-f',script,'--timeout',str(timeout)]+[arg for item in env for arg in ['--env',item]],timeout+120)
 try:
- call('01_bundle',[sys.executable,'scripts/sync_remote.py'])
+ # Reproduce the historical experiment with its exact source, tests and configs.
+ snapshot=root/'artifacts/validation_v2/reproduction/source_snapshot.zip'
+ encoded=base64.b64encode(snapshot.read_bytes()).decode()
+ (root/'runs/bootstrap.py').write_text("import base64,io,zipfile,os,sys\nfrom pathlib import Path\np=Path('/content/project');p.mkdir(exist_ok=True)\nzipfile.ZipFile(io.BytesIO(base64.b64decode("+repr(encoded)+"))).extractall(p)\nos.chdir(p);sys.path.insert(0,str(p))\n")
  report['bundle_sha256']=hashlib.sha256((root/'runs/bootstrap.py').read_bytes()).hexdigest();save()
  call('02_new_runtime',base+['new','-s',session,'--gpu','T4'])
  remote('03_bootstrap','runs/bootstrap.py')

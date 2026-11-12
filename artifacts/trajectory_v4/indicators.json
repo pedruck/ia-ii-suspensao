@@ -1,0 +1,26 @@
+[
+  {
+    "method": "LSTM",
+    "seed": 42,
+    "mae_m_s2": 0.08541710880840622,
+    "accuracy": 1.0
+  },
+  {
+    "method": "LSTM",
+    "seed": 43,
+    "mae_m_s2": 0.08295163543503574,
+    "accuracy": 1.0
+  },
+  {
+    "method": "LSTM",
+    "seed": 44,
+    "mae_m_s2": 0.07909804357095675,
+    "accuracy": 1.0
+  },
+  {
+    "method": "Past RMS persistence",
+    "seed": 0,
+    "mae_m_s2": 0.0447869365964247,
+    "accuracy": 1.0
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "local_numpy_tests": 26,
+  "passed": true,
+  "mutation": "replace prefix with endpoint only",
+  "mutation_detected": true,
+  "mutation_failures": 1
+}

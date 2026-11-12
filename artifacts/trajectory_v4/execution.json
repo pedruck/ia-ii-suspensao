@@ -1,0 +1,30 @@
+{
+  "started": "2026-11-12T15:10:39.373454+00:00",
+  "no_training": true,
+  "stages": [
+    {
+      "stage": "01_source",
+      "exit_code": 0
+    },
+    {
+      "stage": "02_create",
+      "exit_code": 0
+    },
+    {
+      "stage": "03_inference",
+      "exit_code": 0
+    },
+    {
+      "stage": "04_download",
+      "exit_code": 0
+    },
+    {
+      "stage": "05_stop",
+      "exit_code": 0
+    }
+  ],
+  "source_sha256": "f3ba124037d49bb6768c9f760392d7fc7c39eac3791ce072f0aa5812bebbd9ca",
+  "archive_sha256": "fa588f48c9653b47548b5778b1b69f1e9075918782aebf26093ff8c7574ace9a",
+  "export_verified": true,
+  "finished": "2026-11-12T15:12:13.900027+00:00"
+}
