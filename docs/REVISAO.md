@@ -1,3 +1,5 @@
+> Estudo atual (12/11/2026): aplicação exclusivamente LSTM no tema II. Veja [resultados](RESULTADOS_LSTM_V5.md) e [decisão 003](decisions/003-lstm-application-only.md). Os registros abaixo são históricos.
+
 > Atualização de 12/11/2026: o desfecho principal agora é trajetória com pesos conjuntos de até 120 épocas. Veja [resultados atuais](RESULTADOS_TRAJETORIAS_V4.md) e [decisão 002](decisions/002-trajectories-primary.md). O conteúdo abaixo registra as versões históricas.
 
 > Atualização: a [auditoria adicional](RESULTADOS_AUDITORIA_V3.md) encontrou limitação do orçamento de 30 épocas e repetiu a LSTM com mais treino. Consulte a conclusão atualizada antes de interpretar os resultados anteriores.

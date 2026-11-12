@@ -1,0 +1,37 @@
+{
+  "no_training": true,
+  "existing_metrics_match": [
+    {
+      "seed": 42,
+      "best_epoch": 101,
+      "body_rmse_mm": 0.4699939489364624,
+      "previous_body_rmse_mm": 0.46999426558613777
+    },
+    {
+      "seed": 43,
+      "best_epoch": 103,
+      "body_rmse_mm": 0.5184492468833923,
+      "previous_body_rmse_mm": 0.5184494657441974
+    },
+    {
+      "seed": 44,
+      "best_epoch": 108,
+      "body_rmse_mm": 0.46259424090385437,
+      "previous_body_rmse_mm": 0.46259458758868277
+    }
+  ],
+  "prepared_sha256": "77c9babbe2bf4a4cf61cfdd172694eab26e2e2304606648e7c6c73b97aa467fd",
+  "python": "3.13.18 (main, Oct 26 2026, 15:28:15) [GCC 13.3.0]",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.4.6",
+  "device": "x86_64",
+  "windows": 270,
+  "class_phase_pairs": 90,
+  "checkpoint_hashes": {
+    "joint_120_42.pt": "e74646b76efca6d07000a9bc67691324d72c0893e86f7e390d00da6030ffc467",
+    "joint_120_43.pt": "e29f78f850eaaf9d412d0de0a6748b3258fadc07bd8fb97fc4ff096d31818a26",
+    "joint_120_44.pt": "2e42daff7f8089a237b254b48f0c0446370c73de8b67461f3862bdf101b5f8ad"
+  },
+  "source_forecasts_sha256": "6c93f1f6aca89e0eb4701a8509740ce1ed799b81ef23ed1d6b51f6beefb56359",
+  "no_new_inference": true
+}

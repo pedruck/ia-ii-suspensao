@@ -1,0 +1,17 @@
+{
+  "rule": "seed 42; first valid test window in B and E, unchanged",
+  "examples": [
+    {
+      "class": "B",
+      "row": 54,
+      "seed": 42,
+      "start_sample": 27500
+    },
+    {
+      "class": "E",
+      "row": 216,
+      "seed": 42,
+      "start_sample": 27500
+    }
+  ]
+}
