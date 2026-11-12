@@ -1,61 +1,77 @@
-# Suspensão experimental: previsão temporal e indicador de vibração
+# Previsão condicionada de trajetórias de suspensão com LSTM
 
-Projeto de IA II, tema II. A LSTM prevê cinco segundos de deslocamento da carroceria,
-pneu e aceleração estimada, além de um RMS ponderado agregado. Recebe histórico e
-pista futura conhecida. A frequência dominante é calculada depois da previsão.
-RMS tem unidade m/s² e mede intensidade de aceleração; não é frequência em Hz.
+Projeto de IA II, tema II. A análise principal prevê cinco segundos de carroceria,
+roda e curso relativo a partir de cinco segundos de histórico e **pista futura
+conhecida**. A arquitetura também produz aceleração processada e RMS ponderado,
+que permanece como resultado secundário, sem validar conforto humano.
 
-- [Artigo IEEE atualizado, quatro páginas](paper/main.pdf).
-- [Auditoria de validade e correções](docs/RESULTADOS_AUDITORIA_V3.md).
-- [Protocolo e reprodução da auditoria](docs/AUDITORIA_V3.md).
-- [Pesos e evidências da auditoria](artifacts/audit_v3).
-- [Gráficos da auditoria](figures/audit_v3) e [gráficos adicionais](figures/validation_v2).
-- [Resultados e modelos originais](artifacts/models), [segunda análise](docs/RESULTADOS_V2.md).
-- [Demonstração original](notebooks/04_demonstracao_output.ipynb).
+- [Artigo IEEE atual, quatro páginas](paper/main.pdf).
+- [Resultados atuais por sinal e horizonte](docs/RESULTADOS_TRAJETORIAS_V4.md).
+- [Ajustes orientados pelas avaliações anteriores](docs/ADEQUACAO_CRITERIOS_PROFESSOR.md).
+- [Decisão e escopo](docs/decisions/002-trajectories-primary.md).
+- [Previsões completas, métricas e execução](artifacts/trajectory_v4).
+- [Figuras atuais](figures/trajectory_v4).
 
-## Conclusão atualizada
+## Modelos e resultados atuais
 
-A comparação inicial subestimava a LSTM: cinco das seis melhores validações ocorreram
-na última época disponível, 30. Com até 120 épocas e seleção apenas na validação,
-a mesma arquitetura conjunta atingiu 100% de classificação nas três sementes.
+Utilizam-se os checkpoints globais `joint_120_42/43/44.pt` em
+`artifacts/audit_v3/models`. São três sementes da mesma LSTM conjunta, com limite
+120 épocas e paciência 15. A seleção permanece pela perda conjunta de validação.
+Não houve retreinamento para esta revisão. Épocas efetivas: 116/118/120;
+checkpoints: 101/103/108. Modelos de 30 épocas e somente RMS ficam no histórico.
 
-| Método, teste global A–E | Acerto | MAE RMS (m/s²) |
-|---|---:|---:|
-| LSTM original, 30 épocas | 94,4% | 0,121 |
-| LSTM conjunta, até 120 | 100% | 0,082 |
-| Ridge, oito características | 100% | 0,062 |
-| Manter RMS dos últimos 5 s | 100% | 0,045 |
+| RMSE em 5 s (mm) | Persistência | ARX | LSTM, média ± DP de três sementes |
+|---|---:|---:|---:|
+| Carroceria | 2,2141 | 0,4885 | 0,4837 ± 0,0303 |
+| Roda | 2,3725 | 0,5867 | 0,6159 ± 0,0230 |
+| Curso relativo | 1,5994 | 0,6904 | 0,7073 ± 0,0211 |
 
-Os 100% foram reproduzidos por FFT/SVD independentes. Porém, persistir o RMS passado
-já resolve a classificação: o teste cobre intensidades estacionárias separadas por
-classe. Dentro de cada realização, A–E são a mesma forma de onda escalada em amplitude.
-Isso não demonstra resolução geral do problema nem conforto validado em passageiros.
+ARX tem menor RMSE nos prefixos curtos. Em A–C a LSTM tem menor RMSE nos três
+sinais em 5 s. Não há superioridade geral demonstrada. O 100% da classificação
+secundária também é atingido pela persistência do RMS; não mede conforto humano.
 
-O RMSE de carroceria da LSTM conjunta longa foi 0,484 mm em média, próximo de 0,488 mm
-do ARX; a diferença varia por semente e não prova superioridade estatística. A cabeça
-de RMS não tem consistência física imposta com a aceleração temporal prevista.
+## Reproduzir sem treinar
 
-A aceleração é derivada e sensível ao filtro. As 270 janelas incluem repetições, e o
-teste já foi consultado: os diagnósticos são exploratórios. Não se identificou erro
-numérico ou vazamento direto do alvo nas verificações realizadas, mas a diversidade
-experimental limita a generalização.
-
-## Executar a auditoria
-
-Com dependências e CLI Colab autenticado, a partir da raiz:
+Com CLI Colab autenticado, na raiz do repositório:
 
 ```bash
-python scripts/audit_data_v3.py
-python scripts/run_audit_v3.py
-python scripts/report_audit_v3.py
+python scripts/run_trajectory_v4.py --cpu
+python scripts/report_trajectory_v4.py
 ```
 
-A execução final passou em 26 testes. Os checkpoints foram verificados localmente
-antes de encerrar o T4. Para o fluxo original completo, consulte
-[REPRODUCAO.md](docs/REPRODUCAO.md). Nenhum modelo ou resultado anterior foi apagado;
-as versões anteriores do artigo estão em paper/main_v1.pdf e paper/main_v2.pdf.
+O primeiro comando confere os pesos, baixa o dataset com MD5 verificado, executa os
+testes e a inferência, exporta os resultados e encerra a VM após verificar o download.
+Sem `--cpu`, solicita T4. Nesta execução a T4 estava indisponível, e foi usada CPU.
+A avaliação executada passou em 29 testes, e as 150 linhas de métricas foram
+recalculadas das previsões exportadas. A troca de ambiente foi conferida numericamente.
+O segundo comando apenas regenera figuras, macros do artigo e tabela de resultados
+com NumPy/Matplotlib, sem exigir PyTorch.
+
+Para compilar, na pasta `paper`, executar duas vezes:
+
+```bash
+pdflatex -interaction=nonstopmode -halt-on-error main.tex
+```
+
+`python scripts/package_delivery_v6.py` gera os ZIPs do artigo e da entrega completa
+em Downloads e testa a compilação do pacote Overleaf isoladamente.
+
+## Novos treinamentos e histórico
+
+`configs/*.json` usam por padrão até 120 épocas, paciência 15, perda conjunta
+inalterada. O treino padrão é A–E; `PILOT=1` solicita explicitamente um teste de
+desenvolvimento de duas épocas, excluído dos resultados do artigo. É possível
+configurar uma classe com `python scripts/configure.py --mode single --road-class B`
+e usar `EXPERIMENTS=single_B`. Isso não significa que tal modelo já foi treinado.
+As configurações anteriores ficam em `artifacts/legacy_30_configs`.
+
+[Reprodução histórica](docs/REPRODUCAO.md), [auditoria anterior](docs/AUDITORIA_V3.md),
+[peso e resultados originais](artifacts/models) e versões `paper/main_v1/v2/v3`
+permanecem arquivados. `reproduce_v2.py` utiliza o snapshot histórico, preservando
+seus testes e configurações de 30 épocas.
 
 Fonte: Foo e Tan, [Zenodo v3](https://zenodo.org/records/17242919),
-DOI 10.5281/zenodo.17242919. O arquivo original é obtido dos autores e tem o checksum
-verificado. A base fornece pista e deslocamentos; não fornece acelerometria direta,
-relatos de passageiros ou varredura documentada de parâmetros mecânicos.
+DOI 10.5281/zenodo.17242919. A–E são amplitudes proporcionais em cada realização;
+270 janelas incluem repetições de 90 pares classe–fase. O teste já era conhecido:
+a análise é exploratória. O dataset não contém acelerometria direta do assento,
+relatos de passageiros ou varredura de parâmetros mecânicos.

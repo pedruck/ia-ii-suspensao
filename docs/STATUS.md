@@ -1,3 +1,5 @@
+> Atualização de 12/11/2026: o desfecho principal agora é trajetória com pesos conjuntos de até 120 épocas. Veja [resultados atuais](RESULTADOS_TRAJETORIAS_V4.md) e [decisão 002](decisions/002-trajectories-primary.md). O conteúdo abaixo registra as versões históricas.
+
 # Estado das fases
 
 1. Protocolo: concluído. Configurações single_C/all e três testes de escopo passaram localmente. Revisão: identidade, exclusões de arquivos privados e critérios científicos conferidos.

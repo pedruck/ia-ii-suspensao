@@ -1,3 +1,5 @@
+> Atualização de 12/11/2026: o desfecho principal agora é trajetória com pesos conjuntos de até 120 épocas. Veja [resultados atuais](RESULTADOS_TRAJETORIAS_V4.md) e [decisão 002](decisions/002-trajectories-primary.md). O conteúdo abaixo registra as versões históricas.
+
 # Reprodução integral validada em ambiente limpo
 
 Para repetir a segunda análise exploratória na raiz do repositório:
